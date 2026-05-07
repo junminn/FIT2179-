@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://github.com/junminn/FIT2179-/raw/refs/heads/main/data/full_weather.csv" 
+  },
+  "transform": [
+    {
+      "lookup": "place",
+      "from": {
+        "data": {
+          "url": "https://github.com/junminn/FIT2179-/raw/refs/heads/main/data/full_locations.csv"
+        },
+        "key": "place",
+        "fields": ["latitude", "longitude"]
+      }
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "longitude": {"field": "longitude", "type": "quantitative"},
+    "latitude": {"field": "latitude", "type": "quantitative"},
+    "color": {"field": "temperature", "type": "quantitative"}
+  }
+}
