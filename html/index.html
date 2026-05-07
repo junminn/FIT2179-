@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+  <style>
+    body { background-color: #f4f4f4; padding: 20px; font-family: sans-serif; }
+    .chart-container { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <h1>Malaysia Weather & Air Quality Dashboard</h1>
+  
+  <div class="pure-g">
+    <div class="pure-u-1 chart-container" id="vis1"></div>
+    <div class="pure-u-1 chart-container" id="vis2"></div>
+    </div>
 
+  <script>
+    vegaEmbed('#vis1', 'chloropleth_map.json').catch(console.error);
+    vegaEmbed('#vis2', 'chart2.json').catch(console.error);
+    // Embed others similarly
+    // hello
+  </script>
+</body>
+</html>
+ 
