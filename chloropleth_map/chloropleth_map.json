@@ -31,8 +31,8 @@
       "title": "Temp (°C)"
     },
     "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State Name"},
-      {"field": "temperature", "type": "quantitative", "title": "Avg Temp", "format": ".1f"}
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "temperature", "type": "quantitative", "title": "Temperature", "format": ".1f"}
     ]
   }
 }
