@@ -5,48 +5,34 @@
   "height": 400,
   "projection": {
     "type": "mercator",
-    "center": [101.9758, 4.2105],
-    "scale": 1500
+    "center": [102.5, 4.2],
+    "scale": 1700
   },
-  "layer": [
+  "data": {
+    "url": "ne_10m_admin_1_states_provinces.json",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+  },
+  "transform": [
     {
-      "data": {
-        "url": "malaysia.json",
-        "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
-      },
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-      "encoding": {"tooltip": null}
+      "lookup": "properties.name",
+      "from": {
+        "data": {"url": "full_weather.csv"},
+        "key": "state",
+        "fields": ["temperature"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "field": "temperature",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"},
+      "title": "Temp (°C)"
     },
-    {
-      "data": {
-        "url": "malaysia.json",
-        "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
-      },
-      "transform": [
-        {
-          "lookup": "properties.NAME",
-          "from": {
-            "data": {
-              "url": "https://github.com/junminn/FIT2179-/raw/refs/heads/main/chloropleth_map/full_weather.csv"
-            },
-            "key": "state",
-            "fields": ["temperature"]
-          }
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "white"},
-      "encoding": {
-        "color": {
-        "field": "temperature",
-        "type": "quantitative",
-        "scale": {"scheme": "reds"}
-      },
-      "tooltip": [
-      {"field": "properties.NAME", "type": "nominal", "title": "Try NAME"},
-      {"field": "properties.STATE", "type": "nominal", "title": "Try STATE"},
-      {"field": "id", "type": "nominal", "title": "Try ID"}
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State Name"},
+      {"field": "temperature", "type": "quantitative", "title": "Avg Temp", "format": ".1f"}
     ]
   }
-    }
-  ]
 }
