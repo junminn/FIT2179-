@@ -58,7 +58,7 @@
 
     <div class="pure-u-1">
       <div class="chart-container">
-        <h2>Temperature Ranking by State</h2>
+        <h2>Top 10 Hottest States </h2>
         <p>
           While the map provides spatial context, this bar chart allows for a direct comparison 
           of peak temperatures. This helps identify which specific urban centers are 
@@ -77,7 +77,7 @@
   <script>
     // Ensure these paths match where your JSON files are stored!
     vegaEmbed('#vis1', 'chloropleth_map.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis2', 'bar_chart.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis2', '../../bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
   </script>
 
 </body>

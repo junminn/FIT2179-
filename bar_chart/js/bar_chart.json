@@ -7,40 +7,45 @@
     "color": "#2c3e50"
   },
   "width": "container",
-  "height": 300,
+  "height": 400,
   "data": {
-    "url": "../../data/full_weather.csv"
+    "url": "full_weather.csv",
+    "format": {"type": "csv", "parse": {"temperature": "number"}}
   },
   "transform": [
     {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "temperature", "order": "descending"}]
+      "aggregate": [{"op": "mean", "field": "temperature", "as": "avg_temp"}],
+      "groupby": ["state"]
     },
-    {"filter": "datum.temperature > 0"}
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "avg_temp", "order": "descending"}]
+    },
+    {"filter": "datum.rank <= 10"}
   ],
   "mark": {"type": "bar", "cornerRadiusEnd": 4},
   "encoding": {
     "x": {
-      "field": "temperature",
+      "field": "avg_temp",
       "type": "quantitative",
       "title": "Average Temperature (°C)",
-      "scale": {"domain": [20, 30]}
+      "scale": {"zero": false}
     },
     "y": {
       "field": "state",
       "type": "nominal",
       "title": "State",
-      "sort": "-x"
+      "sort": {"field": "avg_temp", "order": "descending"}
     },
     "color": {
-      "field": "temperature",
+      "field": "avg_temp",
       "type": "quantitative",
       "scale": {"scheme": "reds"},
       "legend": null
     },
     "tooltip": [
       {"field": "state", "type": "nominal"},
-      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"}
+      {"field": "avg_temp", "type": "quantitative", "title": "Avg Temp", "format": ".1f"}
     ]
   }
 }
