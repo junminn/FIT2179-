@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 10 Hottest States in Malaysia",
+    "fontSize": 18,
+    "anchor": "start",
+    "color": "#2c3e50"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "../../data/full_weather.csv"
+  },
+  "transform": [
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "temperature", "order": "descending"}]
+    },
+    {"filter": "datum.temperature > 0"}
+  ],
+  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "encoding": {
+    "x": {
+      "field": "temperature",
+      "type": "quantitative",
+      "title": "Average Temperature (°C)",
+      "scale": {"domain": [20, 30]}
+    },
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "sort": "-x"
+    },
+    "color": {
+      "field": "temperature",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal"},
+      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"}
+    ]
+  }
+}
