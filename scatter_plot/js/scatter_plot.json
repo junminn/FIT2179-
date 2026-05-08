@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Temperature vs. Humidity Correlation",
+    "fontSize": 18,
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "data/full_weather.csv",
+    "format": {"type": "csv", "parse": {"temperature": "number", "humidity": "number"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "point", "filled": true, "size": 80, "opacity": 0.6},
+      "encoding": {
+        "x": {
+          "field": "temperature",
+          "type": "quantitative",
+          "title": "Temperature (°C)",
+          "scale": {"domain": [20, 30]}
+        },
+        "y": {
+          "field": "humidity",
+          "type": "quantitative",
+          "title": "Humidity (%)",
+          "scale": {"zero": false}
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": {"title": "State"}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal"},
+          {"field": "city", "type": "nominal"},
+          {"field": "temperature", "type": "quantitative", "title": "Temp"},
+          {"field": "humidity", "type": "quantitative", "title": "Humidity"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "black", "strokeDash": [4,4]},
+      "transform": [{"regression": "humidity", "on": "temperature"}],
+      "encoding": {
+        "x": {"field": "temperature", "type": "quantitative"},
+        "y": {"field": "humidity", "type": "quantitative"}
+      }
+    }
+  ]
+}

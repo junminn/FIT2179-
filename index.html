@@ -68,6 +68,18 @@
       </div>
     </div>
 
+    <div class="pure-u-1">
+      <div class="chart-container">
+        <h2>Temperature vs. Humidity </h2>
+        <p>
+          We can see different states experiencing various humidity and we can see the relationship between both variables. 
+          As the weather gets hotter, hummidity gradually decreases in different cities. People could feel less hot since depending on 
+          which cities they are at. 
+        </p>
+        <div id="vis3" style="width: 100%;"></div>
+      </div>
+    </div>
+
   </div> <div class="footer">
     <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia (2024-2026)</p>
     <p><strong>Author:</strong> Goh Jun Min</p>
@@ -78,6 +90,7 @@
     // Ensure these paths match where your JSON files are stored!
     vegaEmbed('#vis1', 'chloropleth_map/js/chloropleth_map.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis2', 'bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis3', 'scatter_plot/js/scatter_plot.json', {"actions": false}).catch(console.error);
   </script>
 
 </body>
