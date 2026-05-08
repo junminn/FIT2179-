@@ -9,7 +9,7 @@
   "width": "container",
   "height": 400,
   "data": {
-    "url": "full_weather.csv",
+    "url": "data/full_weather.csv",
     "format": {"type": "csv", "parse": {"temperature": "number"}}
   },
   "transform": [
