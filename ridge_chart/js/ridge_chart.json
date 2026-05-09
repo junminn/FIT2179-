@@ -4,7 +4,7 @@
   "params": [
     {
       "name": "Threshold",
-      "value": 29,
+      "value": 26,
       "bind": {
         "input": "range",
         "min": 26,
@@ -23,13 +23,13 @@
     }
   },
   "spec": {
-    "width": 1000,
-    "height": 60,
+    "width": 900,
+    "height": 90, 
     "transform": [
       {
         "density": "temperature",
         "groupby": ["state"],
-        "extent": [24, 35],
+        "extent": [24, 38],
         "steps": 100
       },
       {
@@ -40,7 +40,7 @@
     "mark": {
       "type": "area",
       "stroke": "white",
-      "strokeWidth": 0.8,
+      "strokeWidth": 1,
       "opacity": 0.8,
       "interpolate": "monotone"
     },
@@ -49,12 +49,12 @@
         "field": "value",
         "type": "quantitative",
         "title": "Temperature (°C)",
-        "scale": {"domain": [24, 38]}
+        "scale": {"domain": [24, 35]}
       },
       "y": {
         "field": "density",
         "type": "quantitative",
-        "scale": {"range": [60, 0]},
+        "scale": {"range": [90, 0]}, 
         "axis": null
       },
       "color": {
@@ -65,15 +65,11 @@
           "range": ["#3498db", "#e74c3c"]
         },
         "legend": null
-      },
-      "tooltip": [
-        {"field": "state", "title": "State"},
-        {"field": "value", "title": "Temp", "format": ".1f"}
-      ]
+      }
     }
   },
   "config": {
-    "facet": {"spacing": -30},
+    "facet": {"spacing": -65}, 
     "view": {"stroke": null}
   }
 }

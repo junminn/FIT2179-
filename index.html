@@ -120,20 +120,19 @@
         <div id="vis7" style="width: 100%;"></div>
     </div>
 </div>
-  
-    <div class="chart-container" style="width: 100%;">
-            <h2 class="chart-title">Temperature Profiles Across Malaysia</h2>
-            <p>
-              Let's look at how the areas gradually change colour as heat intenses.
-            </p>
-            <div id="vis8"></div>
-            <p class="chart-description">
-                Compare the typical temperature ranges of each state. 
-                Move the slider to <strong>28.0°C</strong> to see which states 
-                regularly experience high heat.
-            </p>
-        </div>
+    <div class="pure-u-1"></div>
+    <div class="chart-container">
+      <h2 class="chart-title">Climate Profiles Across Malaysia</h2>
+      <p class="chart-description">
+            Here reveals seasonal patterns in air quality throughout the months of different years. By observing 
+            the intensity of color across months and years, we can pinpoint specific times of the year (such as the haze season) 
+            where pollutants consistently peak.
+        </p>
+        <div id="vis8" style="width: 100%;"></div>   
+    </div>
 
+  
+        
     </div>
 </div>
 
@@ -153,7 +152,7 @@
     vegaEmbed('#vis5', 'bubble_plot/js/bubble_plot.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis6', 'heatmap/js/heatmap.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis7', 'donut_chart/js/donut_chart.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis8', 'boxplot/js/boxplot.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis8', 'ridge_chart/js/ridge_chart.json', {"actions": false}).catch(console.error);
 
   </script>
 
