@@ -1,51 +1,79 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
-  "height": 300,
-  "padding": {"left": 10, "top": 10, "right": 10, "bottom": 30},
-  "data": {
-    "url": "data/full_weather.csv"
-  },
+  "data": {"url": "data/full_weather.csv"},
   "params": [
     {
-      "name": "metric_select",
-      "value": "temperature",
+      "name": "Threshold",
+      "value": 29,
       "bind": {
-        "input": "select",
-        "options": ["temperature", "humidity", "wind_speed"],
-        "labels": ["Temperature (°C)", "Humidity (%)", "Wind Speed (m/s)"],
-        "name": "Select Metric: "
+        "input": "range",
+        "min": 26,
+        "max": 35,
+        "step": 0.5,
+        "name": "Heat Alert (°C): "
       }
     }
   ],
-  "mark": {
-    "type": "boxplot",
-    "extent": "min-max",
-    "ticks": true,
-    "size": 30
+  "facet": {
+    "row": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "header": {"labelAngle": 0, "labelAlign": "left", "labelFontSize": 11, "labelFontWeight": "bold"}
+    }
   },
-  "encoding": {
-    "x": {
-      "field": "state",
-      "type": "nominal",
-      "title": "Malaysian States",
-      "axis": {"labelAngle": -45}
+  "spec": {
+    "width": 1000,
+    "height": 60,
+    "transform": [
+      {
+        "density": "temperature",
+        "groupby": ["state"],
+        "extent": [24, 35],
+        "steps": 100
+      },
+      {
+        "calculate": "datum.value >= Threshold ? 'Alert' : 'Normal'",
+        "as": "Status"
+      }
+    ],
+    "mark": {
+      "type": "area",
+      "stroke": "white",
+      "strokeWidth": 0.8,
+      "opacity": 0.8,
+      "interpolate": "monotone"
     },
-    "y": {
-      "field": {"signal": "metric_select"},
-      "type": "quantitative",
-      "title": "Recorded Value",
-      "scale": {"zero": false}
-    },
-    "color": {
-      "field": "state",
-      "type": "nominal",
-      "legend": null
-    },
-    "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},
-      {"field": "humidity", "type": "quantitative", "title": "Humidity (%)"}
-    ]
+    "encoding": {
+      "x": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Temperature (°C)",
+        "scale": {"domain": [24, 38]}
+      },
+      "y": {
+        "field": "density",
+        "type": "quantitative",
+        "scale": {"range": [60, 0]},
+        "axis": null
+      },
+      "color": {
+        "field": "Status",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Normal", "Alert"],
+          "range": ["#3498db", "#e74c3c"]
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "state", "title": "State"},
+        {"field": "value", "title": "Temp", "format": ".1f"}
+      ]
+    }
+  },
+  "config": {
+    "facet": {"spacing": -30},
+    "view": {"stroke": null}
   }
 }
