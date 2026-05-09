@@ -1,14 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The Triple Threat: Balancing Heat, Moisture, and Wind Speed",
-    "subtitle": "How air movement interacts with temperature and humidity across Malaysian states.",
-    "fontSize": 18,
-    "subtitleFontSize": 12,
-    "subtitleColor": "gray",
-    "anchor": "start",
-    "offset": 20
-  },
   "width": "container",
   "height": 400,
   "data": {
@@ -28,36 +19,14 @@
       "bind": {
         "input": "select",
         "options": [
-          null,
-          "Selangor",
-          "Johor",
-          "Sarawak",
-          "Sabah",
-          "Pahang",
-          "Perak",
-          "Kedah",
-          "Kelantan",
-          "Melaka",
-          "Negeri Sembilan",
-          "Pulau Pinang",
-          "Perlis",
-          "Terengganu"
+          null, "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", "Perak", 
+          "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pulau Pinang", 
+          "Perlis", "Terengganu"
         ],
         "labels": [
-          "Show All States",
-          "Selangor",
-          "Johor",
-          "Sarawak",
-          "Sabah",
-          "Pahang",
-          "Perak",
-          "Kedah",
-          "Kelantan",
-          "Melaka",
-          "Negeri Sembilan",
-          "Pulau Pinang",
-          "Perlis",
-          "Terengganu"
+          "Show All States", "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", 
+          "Perak", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", 
+          "Pulau Pinang", "Perlis", "Terengganu"
         ],
         "name": "Focus on State: "
       }
@@ -100,6 +69,7 @@
       "legend": {"orient": "right"}
     },
     "tooltip": [
+      {"field": "place", "type": "nominal", "title": "Location"},
       {"field": "state", "type": "nominal", "title": "State"},
       {"field": "city", "type": "nominal", "title": "City"},
       {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},

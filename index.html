@@ -101,6 +101,15 @@
         <div id="vis5" style="width: 100%;"></div>
     </div>
 </div>
+    <div class="pure-u-1">
+    <div class="chart-container">
+        <h2 class="chart-title">Annual Cycles: Identifying Pollution "Hot Months"</h2>
+        <p class="chart-description">
+            This matrix visualization reveals seasonal patterns in air quality. By observing the intensity of color across months and years, we can pinpoint specific times of the year (such as the haze season) where pollutants consistently peak.
+        </p>
+        <div id="vis6" style="width: 100%;"></div>
+    </div>
+</div>
 
   </div> <div class="footer">
     <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia (2024-2026)</p>
@@ -115,6 +124,7 @@
     vegaEmbed('#vis3', 'scatter_plot/js/scatter_plot.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis4', 'line_chart/js/line_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis5', 'bubble_plot/js/bubble_plot.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis6', 'heatmap/js/heatmap.json', {"actions": false}).catch(console.error);
 
   </script>
 

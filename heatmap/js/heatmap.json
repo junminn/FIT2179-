@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "padding": {"left": 10, "top": 10, "right": 70, "bottom": 10},
+  "data": {
+    "url": "data/air_pollution.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"date": "date:'%d/%m/%Y'"}
+    }
+  },
+  "params": [
+    {
+      "name": "Pollutant_selection",
+      "bind": {
+        "input": "select",
+        "options": ["CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
+        "labels": ["CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
+        "name": "Select Pollutant: "
+      },
+      "value": "PM 2.5"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.pollutant == Pollutant_selection"},
+    {"calculate": "monthFormat(month(datum.date))", "as": "month_name"},
+    {"calculate": "year(datum.date)", "as": "year_val"}
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "year_val",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "month_name",
+      "type": "nominal",
+      "title": "Month",
+      "sort": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    },
+    "color": {
+      "field": "concentration ug/m3",
+      "type": "quantitative",
+      "scale": {"scheme": "greens"},
+      "legend": {
+        "title": "Level (µg/m³)",
+        "orient": "right",
+        "offset": 25,
+        "labelLimit": 200,
+        "titleLimit": 200
+      }
+    },
+    "tooltip": [
+      {"field": "year_val", "type": "ordinal", "title": "Year"},
+      {"field": "month_name", "type": "nominal", "title": "Month"},
+      {"field": "concentration ug/m3", "type": "quantitative", "title": "Concentration (µg/m³)"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domain": false}
+  }
+}
