@@ -80,6 +80,16 @@
       </div>
     </div>
 
+    <div class="pure-u-1">
+    <div class="chart-container">
+        <h2>4. Air Quality Analysis</h2>
+        <p>
+          Over here we have 
+        </p>
+        <div id="vis4" style="width: 100%;"></div>
+    </div>
+</div>
+
   </div> <div class="footer">
     <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia (2024-2026)</p>
     <p><strong>Author:</strong> Goh Jun Min</p>
@@ -91,6 +101,7 @@
     vegaEmbed('#vis1', 'chloropleth_map/js/chloropleth_map.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis2', 'bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis3', 'scatter_plot/js/scatter_plot.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis4', 'line_chart/js/line_chart.json', {"actions": false}).catch(console.error);
   </script>
 
 </body>
