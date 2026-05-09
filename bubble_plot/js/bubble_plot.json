@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Triple Threat: Balancing Heat, Moisture, and Wind Speed",
+    "subtitle": "How air movement interacts with temperature and humidity across Malaysian states.",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "gray",
+    "anchor": "start",
+    "offset": 20
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "data/full_weather.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "temperature": "number",
+        "humidity": "number",
+        "wind_speed": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Selangor",
+          "Johor",
+          "Sarawak",
+          "Sabah",
+          "Pahang",
+          "Perak",
+          "Kedah",
+          "Kelantan",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pulau Pinang",
+          "Perlis",
+          "Terengganu"
+        ],
+        "labels": [
+          "Show All States",
+          "Selangor",
+          "Johor",
+          "Sarawak",
+          "Sabah",
+          "Pahang",
+          "Perak",
+          "Kedah",
+          "Kelantan",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pulau Pinang",
+          "Perlis",
+          "Terengganu"
+        ],
+        "name": "Focus on State: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "State_selection == null || datum.state == State_selection"
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.6,
+    "stroke": "black",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "temperature",
+      "type": "quantitative",
+      "title": "Temperature (°C)",
+      "scale": {"zero": false, "padding": 20}
+    },
+    "y": {
+      "field": "humidity",
+      "type": "quantitative",
+      "title": "Humidity (%)",
+      "scale": {"zero": false, "padding": 20}
+    },
+    "size": {
+      "field": "wind_speed",
+      "type": "quantitative",
+      "title": "Wind Speed (m/s)",
+      "scale": {"range": [50, 1000]}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "legend": {"orient": "right"}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "city", "type": "nominal", "title": "City"},
+      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},
+      {"field": "humidity", "type": "quantitative", "title": "Humidity (%)"},
+      {"field": "wind_speed", "type": "quantitative", "title": "Wind (m/s)"}
+    ]
+  }
+}

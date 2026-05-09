@@ -13,7 +13,7 @@
       "type": "csv",
       "parse": {
         "date": "date:'%d/%m/%Y'",
-        "concentration 痢/m3": "number"
+        "concentration ug/m3": "number"
       }
     }
   },
@@ -40,10 +40,14 @@
       "field": "date",
       "type": "temporal",
       "title": "Year",
-      "axis": {"format": "%Y"}
+      "axis": {
+        "format": "%Y",
+        "tickCount": "year", 
+        "grid": true
+      }
     },
     "y": {
-      "field": "concentration 痢/m3",
+      "field": "concentration ug/m3",
       "type": "quantitative",
       "title": "Concentration (µg/m³)"
     },
@@ -55,7 +59,7 @@
     "tooltip": [
       {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
       {"field": "pollutant", "type": "nominal"},
-      {"field": "concentration 痢/m3", "type": "quantitative", "title": "Value"}
+      {"field": "concentration ug/m3", "type": "quantitative", "title": "Value"}
     ]
   }
 }
