@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Pollutant Concentration Trends in Malaysia",
+    "fontSize": 18,
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "data/air_pollution.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "date": "date:'%d/%m/%Y'",
+        "concentration 痢/m_": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "Pollutant_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
+        "labels": ["Show All", "Carbon Monoxide (CO)", "Nitrogen Dioxide (NO2)", "Ozone (O3)", "PM 10", "PM 2.5", "Sulphur Dioxide (SO2)"],
+        "name": "Select Pollutant: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Pollutant_selection == null || datum.pollutant == Pollutant_selection"
+    }
+  ],
+  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"format": "%Y", "grid": true}
+    },
+    "y": {
+      "field": "concentration(",
+      "type": "quantitative",
+      "title": "Concentration",
+      "scale": {"zero": false}
+    },
+    "color": {
+      "field": "pollutant",
+      "type": "nominal",
+      "title": "Pollutant Type"
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+      {"field": "pollutant", "type": "nominal", "title": "Pollutant"},
+      {"field": "concentration 痢/m_", "type": "quantitative", "title": "Value"}
+    ]
+  }
+}
