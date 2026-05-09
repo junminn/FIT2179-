@@ -13,49 +13,49 @@
       "type": "csv",
       "parse": {
         "date": "date:'%d/%m/%Y'",
-        "concentration 痢/m_": "number"
+        "concentration 痢/m3": "number"
       }
     }
   },
   "params": [
     {
       "name": "Pollutant_selection",
+      "select": {"type": "point", "fields": ["pollutant"]},
       "bind": {
         "input": "select",
         "options": [null, "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
-        "labels": ["Show All", "Carbon Monoxide (CO)", "Nitrogen Dioxide (NO2)", "Ozone (O3)", "PM 10", "PM 2.5", "Sulphur Dioxide (SO2)"],
+        "labels": ["Show All", "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
         "name": "Select Pollutant: "
       }
     }
   ],
   "transform": [
     {
-      "filter": "Pollutant_selection == null || datum.pollutant == Pollutant_selection"
+      "filter": "Pollutant_selection.pollutant == null || datum.pollutant == Pollutant_selection.pollutant"
     }
   ],
-  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  "mark": {"type": "line", "point": true},
   "encoding": {
     "x": {
       "field": "date",
       "type": "temporal",
       "title": "Year",
-      "axis": {"format": "%Y", "grid": true}
+      "axis": {"format": "%Y"}
     },
     "y": {
-      "field": "concentration(",
+      "field": "concentration 痢/m3",
       "type": "quantitative",
-      "title": "Concentration",
-      "scale": {"zero": false}
+      "title": "Concentration (µg/m³)"
     },
     "color": {
       "field": "pollutant",
       "type": "nominal",
-      "title": "Pollutant Type"
+      "legend": {"title": "Pollutant"}
     },
     "tooltip": [
       {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
-      {"field": "pollutant", "type": "nominal", "title": "Pollutant"},
-      {"field": "concentration 痢/m_", "type": "quantitative", "title": "Value"}
+      {"field": "pollutant", "type": "nominal"},
+      {"field": "concentration 痢/m3", "type": "quantitative", "title": "Value"}
     ]
   }
 }
