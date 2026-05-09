@@ -112,12 +112,21 @@
         <div id="vis6" style="width: 100%;"></div>
     </div>
 </div>
+    <div class="pure-u-1-2"> <div class="chart-container">
+        <h2 class="chart-title">Sun Safety: UV Exposure Categories</h2>
+        <p class="chart-description">
+            Understanding the intensity of ultraviolet radiation. Hover over the segments to see safety guidelines and protection requirements for different index levels.
+        </p>
+        <div id="vis7" style="width: 100%;"></div>
+    </div>
+</div>
 
   </div> <div class="footer">
     <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia (2024-2026)</p>
     <p><strong>Author:</strong> Goh Jun Min</p>
     <p><strong>Date Modified:</strong> 8 May 2026</p>
   </div>
+
 
   <script>
     // Ensure these paths match where your JSON files are stored!
@@ -127,6 +136,7 @@
     vegaEmbed('#vis4', 'line_chart/js/line_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis5', 'bubble_plot/js/bubble_plot.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis6', 'heatmap/js/heatmap.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis7', 'donut_chart/js/donut_chart.json', {"actions": false}).catch(console.error);
 
   </script>
 

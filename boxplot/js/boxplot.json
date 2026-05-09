@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "padding": {"left": 10, "top": 10, "right": 10, "bottom": 30},
+  "data": {
+    "url": "data/full_weather.csv"
+  },
+  "params": [
+    {
+      "name": "metric_select",
+      "value": "temperature",
+      "bind": {
+        "input": "select",
+        "options": ["temperature", "humidity", "wind_speed"],
+        "labels": ["Temperature (°C)", "Humidity (%)", "Wind Speed (m/s)"],
+        "name": "Select Metric: "
+      }
+    }
+  ],
+  "mark": {
+    "type": "boxplot",
+    "extent": "min-max",
+    "ticks": true,
+    "size": 30
+  },
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "Malaysian States",
+      "axis": {"labelAngle": -45}
+    },
+    "y": {
+      "field": {"signal": "metric_select"},
+      "type": "quantitative",
+      "title": "Recorded Value",
+      "scale": {"zero": false}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},
+      {"field": "humidity", "type": "quantitative", "title": "Humidity (%)"}
+    ]
+  }
+}
