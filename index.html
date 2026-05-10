@@ -131,8 +131,54 @@
         <div id="vis8" style="width: 100%;"></div>   
     </div>
 
-  
+    <div class="chart-container" style="padding: 25px; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+    <h2 class="chart-title" style="color: #e43030;">
+        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Pollutant Health Impact Analysis
+    </h2>
+    <p>
+      We can see the risk levels of each types of pollutants to know where they are safe and when they are in danger. 
+      The color tells you the category of risk and the length tells you how deep into that category the pollutant currently sits.
+    </p>
+    
+    <div class="pure-g" style="display: flex; align-items: center; flex-wrap: nowrap;">
         
+        <div class="pure-u-3-5">
+            <div id="vis9"></div>
+        </div>
+
+        <div class="pure-u-2-5" style="margin-left: 30px;">
+            <div class="status-panel" style="display: flex; flex-direction: column; gap: 15px;">
+                
+                <div style="padding: 15px; background: #fdf2f2; border-radius: 8px; border: 1px solid #feb2b2;">
+                    <h4 style="margin: 0 0 5px 0; color: #9b2c2c;">Reporting Requirement</h4>
+                    <p style="margin: 0; font-size: 0.85em; color: #7b2d2d;">
+                        Pollutants extending into the <strong>purple/red zones</strong> require immediate submission to the Environmental Agency.
+                    </p>
+                </div>
+                <div style="padding: 15px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+                    <h4 style="margin: 0 0 5px 0; color: #166534;">Safe Thresholds</h4>
+                    <p style="margin: 0; font-size: 0.85em; color: #14532d;">
+                        Green bars indicate concentrations within the WHO "Safe to Breathe" guidelines.
+                    </p>
+                </div>
+                <div class="risk-guide" style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.85em; line-height: 1.5; color: #2c3e50; border: 1px solid #dee2e6;">
+                  <h4 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-info-circle"></i> Reading the Scale</h4>
+                  <p>
+                      To simplify complex concentration data, we use a Centered Risk Model. 
+                      Instead of raw units, the X-axis shows how many "risk categories" a pollutant is away from the 
+                      Safety Threshold(0).
+                  </p>
+                  <div style="display: flex; gap: 10px; margin-top: 10px;">
+                      <span style="color: #27ae60;"><strong>← Safe Zone:</strong> High stability</span>
+                      <span style="color: #c0392b;"><strong>Danger Zone →:</strong> Immediate action required</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+  
     </div>
 </div>
 
@@ -153,6 +199,7 @@
     vegaEmbed('#vis6', 'heatmap/js/heatmap.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis7', 'donut_chart/js/donut_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis8', 'ridge_chart/js/ridge_chart.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis9', 'diverging_barchart/js/diverging.json', {"actions": false}).catch(console.error);
 
   </script>
 
