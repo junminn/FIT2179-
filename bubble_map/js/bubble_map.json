@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 500,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "chloropleth_map/js/ne_10m_admin_1_states_provinces.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d1d2d3",
+        "stroke": "#404344",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "data/full_locations.csv"
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"url": "data/full_weather.csv"},
+            "key": "state",
+            "fields": ["temperature", "humidity", "dew_point"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "humidity",
+          "type": "quantitative",
+          "title": "Humidity (%)",
+          "scale": {"range": [50, 600]}
+        },
+        "color": {
+          "field": "temperature",
+          "type": "quantitative",
+          "title": "Temp (°C)",
+          "scale": {"scheme": "redblue", "reverse": true}
+        },
+        "tooltip": [
+          {"field": "identifying_location", "title": "Station"},
+          {"field": "state", "title": "State"},
+          {"field": "temperature", "title": "Temperature (°C)"},
+          {"field": "humidity", "title": "Humidity (%)"},
+          {"field": "dew_point", "title": "Dew Point (°C)"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "legend": {
+      "orient": "right",
+      "offset": 20,
+      "legendY": 250,
+      "titleFontSize": 16,
+      "labelFontSize": 10
+    },
+    "view": {"stroke": null}
+  }
+}

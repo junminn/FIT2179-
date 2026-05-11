@@ -93,6 +93,7 @@
         <div id="vis4" style="width: 100%;"></div>
     </div>
 </div>
+
     <div class="pure-u-1">
     <div class="chart-container">
         <h2> Triple Threat: Balancing Heat, Moisture, Wind Speed </h2>
@@ -101,6 +102,7 @@
         <div id="vis5" style="width: 100%;"></div>
     </div>
 </div>
+
     <div class="pure-u-1">
     <div class="chart-container">
         <h2 class="chart-title">Annual Cycles: Identify Pollution "Hot Months"</h2>
@@ -112,6 +114,7 @@
         <div id="vis6" style="width: 100%;"></div>
     </div>
 </div>
+<!-- vis7 -->
     <div class="pure-u-1-2"> <div class="chart-container">
         <h2 class="chart-title">Sun Safety: UV Exposure Categories</h2>
         <p class="chart-description">
@@ -120,6 +123,7 @@
         <div id="vis7" style="width: 100%;"></div>
     </div>
 </div>
+<!-- vis8 -->
     <div class="pure-u-1"></div>
     <div class="chart-container">
       <h2 class="chart-title">Climate Profiles Across Malaysia</h2>
@@ -130,7 +134,8 @@
         </p>
         <div id="vis8" style="width: 100%;"></div>   
     </div>
-
+  
+<!-- vis9 -->
     <div class="chart-container" style="padding: 25px; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
     <h2 class="chart-title" style="color: #e43030;">
         <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Pollutant Health Impact Analysis
@@ -139,13 +144,11 @@
       We can see the risk levels of each types of pollutants to know where they are safe and when they are in danger. 
       The color tells you the category of risk and the length tells you how deep into that category the pollutant currently sits.
     </p>
-    
     <div class="pure-g" style="display: flex; align-items: center; flex-wrap: nowrap;">
-        
         <div class="pure-u-3-5">
             <div id="vis9"></div>
         </div>
-
+<!-- adding extra info vis9 -->
         <div class="pure-u-2-5" style="margin-left: 30px;">
             <div class="status-panel" style="display: flex; flex-direction: column; gap: 15px;">
                 
@@ -161,27 +164,44 @@
                         Green bars indicate concentrations within the WHO "Safe to Breathe" guidelines.
                     </p>
                 </div>
-                <div class="risk-guide" style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.85em; line-height: 1.5; color: #2c3e50; border: 1px solid #dee2e6;">
-                  <h4 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-info-circle"></i> Reading the Scale</h4>
-                  <p>
-                      To simplify complex concentration data, we use a Centered Risk Model. 
-                      Instead of raw units, the X-axis shows how many "risk categories" a pollutant is away from the 
-                      Safety Threshold(0).
-                  </p>
-                  <div style="display: flex; gap: 10px; margin-top: 10px;">
-                      <span style="color: #27ae60;"><strong>← Safe Zone:</strong> High stability</span>
-                      <span style="color: #c0392b;"><strong>Danger Zone →:</strong> Immediate action required</span>
-                  </div>
-                </div>
             </div>
-        </div>
-        
+        </div>      
     </div>
 </div>
-  
+<!-- vis10 -->
+    <div class="pure-g" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="pure-u-1-1">
+        <div class="chart-container" style="padding: 40px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);">
+            <div style="text-align: left; margin-bottom: 30px;">
+                <h2 class="chart-title" style="font-size: 1.8em; color: #f40909; margin-bottom: 10px;">
+                    <i class="fas fa-map-marked-alt"></i> Geographic Climate Correlation
+                </h2>
+                <p style="color: #020303; font-size: 1.1em; line-height: 1.5; margin: 0;">
+                    This map visualizes the relationship between <strong>Humidity</strong> (represented by bubble size) and 
+                    <strong>Temperature</strong> (represented by color) across Malaysia's states. Higher concentrations of 
+                    humidity are typically found in coastal regions, while temperature variations highlight the contrast 
+                    between urban centers and highland areas.
+                </p>
+            </div>
+
+            <div id="vis10" style="width: 100%; min-height: 500px; background-color: #fcfcfc; border-radius: 10px; border: 1px solid #eee;"></div>
+
+            <div class="map-footer" style="margin-top: 30px; display: flex; justify-content: flex-start; gap: 50px; border-top: 1px solid #eee; padding-top: 25px;">
+                <div style="max-width: 300px;">
+                    <strong style="color: #e74c3c;font-size: 1.2em;"><i class="fas fa-thermometer-half"></i> Temperature Scale</strong>
+                    <p style="font-size: 0.85em; margin: 5px 0; color: #7f8c8d;">Red tones indicate higher heat intensity, while blue tones represent cooler climates.</p>
+                </div>
+                <div style="max-width: 300px; border-left: 2px solid #e0e0e0; padding-left: 30px;">
+                    <strong style="color: #2980b9;font-size: 1.2em;"><i class="fas fa-tint"></i> Humidity Volume</strong>
+                    <p style="font-size: 0.85em; margin: 5px 0; color: #7f8c8d;">Larger bubbles correspond to higher localized humidity percentages.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
+<!-- footer -->
   </div> <div class="footer">
     <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia</p>
     <p><strong>Designed By:</strong> Goh Jun Min</p>
@@ -199,6 +219,7 @@
     vegaEmbed('#vis7', 'donut_chart/js/donut_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis8', 'ridge_chart/js/ridge_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis9', 'diverging_barchart/js/diverging.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis10', 'bubble_map/js/bubble_map.json', {"actions": false}).catch(console.error);
 
   </script>
 
