@@ -1,24 +1,54 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
+  "width": 1100,
   "height": 500,
+  "title": {
+    "text": "Weather Station Humidity and Temperature in Malaysia",
+    "fontSize": 20,
+    "anchor": "middle",
+    "offset": 20
+  },
+  "params": [
+    {
+      "name": "temp_filter",
+      "value": 20,
+      "bind": {
+        "input": "range", "min": 20, "max": 35, "step": 1, "name": "Min Temp: "
+      }
+    }
+  ],
   "projection": {
-    "type": "mercator"
+    "type": "mercator",
+    "center": [109.5, 4.2],
+    "scale": 3000
   },
   "layer": [
     {
+      "name": "Ocean",
       "data": {
-        "url": "chloropleth_map/js/ne_10m_admin_1_states_provinces.json",
-        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_ocean"}
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": "#d1d2d3",
-        "stroke": "#404344",
-        "strokeWidth": 0.5
-      }
+      "mark": {"type": "geoshape", "fill": "#cce0f3"}
     },
     {
+      "name": "Graticules",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_10"}
+      },
+      "mark": {"type": "geoshape", "filled": false, "stroke": "white", "strokeWidth": 0.3}
+    },
+    {
+      "name": "Background_Land",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {"type": "geoshape", "fill": "#dfdbdb", "stroke": "white", "strokeWidth": 0.5}
+    },
+    {
+      "name": "Bubble_Layer",
       "data": {
         "url": "data/full_locations.csv"
       },
@@ -30,13 +60,14 @@
             "key": "state",
             "fields": ["temperature", "humidity", "dew_point"]
           }
-        }
+        },
+        {"filter": "datum.temperature >= temp_filter"}
       ],
       "mark": {
         "type": "circle",
         "opacity": 0.8,
-        "stroke": "white",
-        "strokeWidth": 1
+        "stroke": "black",
+        "strokeWidth": 0.5
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
@@ -45,7 +76,7 @@
           "field": "humidity",
           "type": "quantitative",
           "title": "Humidity (%)",
-          "scale": {"range": [50, 600]}
+          "scale": {"range": [50, 800]}
         },
         "color": {
           "field": "temperature",
@@ -57,9 +88,34 @@
           {"field": "identifying_location", "title": "Station"},
           {"field": "state", "title": "State"},
           {"field": "temperature", "title": "Temperature (°C)"},
-          {"field": "humidity", "title": "Humidity (%)"},
-          {"field": "dew_point", "title": "Dew Point (°C)"}
+          {"field": "humidity", "title": "Humidity (%)"}
         ]
+      }
+    },
+    {
+      "name": "State_Labels",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {
+        "type": "text", 
+        "fontSize": 10, 
+        "fontWeight": "bold", 
+        "color": "black",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "text": {"field": "properties.name", "type": "nominal"},
+        "opacity": {
+          "condition": {
+            "test": "datum.properties.name == 'Selangor' || datum.properties.name == 'Sarawak' || datum.properties.name == 'Sabah' || datum.properties.name == 'Johor' || datum.properties.name == 'Pahang' || datum.properties.name == 'Perak'",
+            "value": 0.7
+          },
+          "value": 0
+        }
       }
     }
   ],
@@ -67,8 +123,7 @@
     "legend": {
       "orient": "right",
       "offset": 20,
-      "legendY": 250,
-      "titleFontSize": 16,
+      "titleFontSize": 14,
       "labelFontSize": 10
     },
     "view": {"stroke": null}

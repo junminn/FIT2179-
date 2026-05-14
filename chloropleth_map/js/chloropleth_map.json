@@ -13,11 +13,7 @@
       "name": "temp_selection",
       "value": 24,
       "bind": {
-        "input": "range",
-        "min": 24,
-        "max": 30,
-        "step": 0.5,
-        "name": "Min Temperature: "
+        "input": "range", "min": 24, "max": 30, "step": 0.5, "name": "Min Temperature: "
       }
     }
   ],
@@ -28,15 +24,40 @@
   },
   "layer": [
     {
+      "name": "Ocean",
       "data": {
-        "url": "https://raw.githubusercontent.com/junminn/FIT2179-/main/chloropleth_map/js/ne_10m_admin_1_states_provinces.json",
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_ocean"}
+      },
+      "mark": {"type": "geoshape", "fill": "#dae8f5"}
+    },
+    {
+      "name": "Graticules",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_10"}
+      },
+      "mark": {"type": "geoshape", "filled": false, "stroke": "white", "strokeWidth": 0.3}
+    },
+    {
+      "name": "Background_States",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {"type": "geoshape", "fill": "#efefef", "stroke": "white", "strokeWidth": 0.5}
+    },
+    {
+      "name": "Temperature_Map",
+      "data": {
+        "url": "chloropleth_map/js/ne_10m.json",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
       "transform": [
         {
           "lookup": "properties.name",
           "from": {
-            "data": {"url": "https://raw.githubusercontent.com/junminn/FIT2179-/main/chloropleth_map/js/full_weather.csv"},
+            "data": {"url": "data/full_weather.csv"},
             "key": "state",
             "fields": ["temperature"]
           }
@@ -57,21 +78,22 @@
       }
     },
     {
+      "name": "State_Labels",
       "data": {
-        "url": "https://raw.githubusercontent.com/junminn/FIT2179-/main/chloropleth_map/js/ne_10m_admin_1_states_provinces.json",
+        "url": "chloropleth_map/js/ne_10m.json",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": "bold"},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": "bold", "dy": -5},
       "encoding": {
         "longitude": {"field": "properties.longitude", "type": "quantitative"},
         "latitude": {"field": "properties.latitude", "type": "quantitative"},
         "text": {"field": "properties.name", "type": "nominal"},
         "opacity": {
           "condition": {
-            "test": "datum.properties.name == 'Selangor' || datum.properties.name == 'Sarawak' || datum.properties.name == 'Sabah' || datum.properties.name == 'Johor'",
+            "test": "datum.properties.name == 'Selangor' || datum.properties.name == 'Sarawak' || datum.properties.name == 'Sabah' || datum.properties.name == 'Johor' || datum.properties.name == 'Kedah' || datum.properties.name == 'Kelantan' || datum.properties.name == 'Melaka' || datum.properties.name == 'Negeri Sembilan' || datum.properties.name == 'Pahang' || datum.properties.name == 'Perak' || datum.properties.name == 'Perlis' || datum.properties.name == 'Pulau Pinang' || datum.properties.name == 'Terengganu' || datum.properties.name == 'W.P. Kuala Lumpur' || datum.properties.name == 'W.P. Labuan' || datum.properties.name == 'W.P. Putrajaya'",
             "value": 1
           },
-          "value": 1
+          "value": 0
         }
       }
     }
