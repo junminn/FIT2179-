@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Warning Distribution by Label and Pollutant Type",
+  "title": "Warning Distribution by Label and Pollutant Type (Vertical)",
   "width": 500,
-  "height": 300,
+  "height": 400,
   "data": {
     "url": "data/air_quality_warning.csv"
   },
   "mark": "bar",
   "encoding": {
-    "y": {
+    "x": {
       "field": "label",
       "type": "nominal",
       "sort": [
@@ -19,9 +19,12 @@
         "Very Unhealthy",
         "Hazardous"
       ],
-      "title": "Air Quality Label"
+      "title": "Air Quality Label",
+      "axis": {
+        "labelAngle": -45
+      }
     },
-    "x": {
+    "y": {
       "aggregate": "count",
       "type": "quantitative",
       "title": "Number of Pollutants"
