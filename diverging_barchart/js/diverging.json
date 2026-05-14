@@ -1,66 +1,44 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "data/air_quality_warning.csv"},
-  "width":600,
+  "title": "Warning Distribution by Label and Pollutant Type",
+  "width": 500,
   "height": 300,
-  "transform": [
-    {
-      "calculate": "{'Good': 0, 'Moderate': 1, 'Unhealthy for sensitive groups': 2, 'Unhealthy': 3, 'Very Unhealthy': 4, 'Hazardous': 5}[datum.label]",
-      "as": "severity_score"
-    },
-    {
-      "calculate": "datum.severity_score - 1.5",
-      "as": "deviation"
-    }
-  ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "data": {
+    "url": "data/air_quality_warning.csv"
+  },
+  "mark": "bar",
   "encoding": {
     "y": {
-      "field": "pollutant",
-      "type": "nominal",
-      "title": null,
-      "axis": {
-        "labelFontSize": 12,
-        "labelPadding": 20, 
-        "offset": 10,
-        "ticks": false,
-        "domain": false
-      }
-    },
-    "x": {
-      "field": "deviation",
-      "type": "quantitative",
-      "title": "Risk Level (Safe ← | → Danger)",
-      "axis": {
-        "values": [-1.5, 0, 1.5, 3.5],
-        "grid": true,
-        "domain": true
-      }
-    },
-    "color": {
       "field": "label",
       "type": "nominal",
+      "sort": [
+        "Good",
+        "Moderate",
+        "Unhealthy for sensitive groups",
+        "Unhealthy",
+        "Very Unhealthy",
+        "Hazardous"
+      ],
+      "title": "Air Quality Label"
+    },
+    "x": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Number of Pollutants"
+    },
+    "color": {
+      "field": "pollutant",
+      "type": "nominal",
       "scale": {
-        "domain": [
-          "Good",
-          "Moderate",
-          "Unhealthy for sensitive groups",
-          "Unhealthy",
-          "Very Unhealthy",
-          "Hazardous"
-        ],
-        "range": ["#2ecc71", "#f1c40f", "#e67e22", "#e74c3c", "#9b59b6", "#8e44ad"]
+        "scheme": "category10"
       },
-      "legend": {"orient": "bottom", "title": null}
+      "title": "Pollutant Type"
     },
     "tooltip": [
-      {"field": "pollutant", "title": "Pollutant"},
-      {"field": "label", "title": "Risk Category"},
-      {"field": "warning_message", "title": "Advice"}
+      {"field": "label", "type": "nominal"},
+      {"field": "pollutant", "type": "nominal"},
+      {"field": "warning_message", "type": "nominal"},
+      {"field": "should_report", "type": "nominal"}
     ]
-  },
-  "config": {
-    "view": {"stroke": null},
-    "axis": {"domainColor": "#ddd"}
   }
 }
