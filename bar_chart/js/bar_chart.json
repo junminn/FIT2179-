@@ -1,51 +1,44 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Top 10 Hottest States in Malaysia",
-    "fontSize": 18,
-    "anchor": "start",
-    "color": "#2c3e50"
-  },
-  "width": "container",
+  "title": "UV Level by Exposure Category",
+  "width": 900,
   "height": 400,
   "data": {
-    "url": "data/full_weather.csv",
-    "format": {"type": "csv", "parse": {"temperature": "number"}}
+    "url": "data/uv_info.csv"
   },
-  "transform": [
-    {
-      "aggregate": [{"op": "mean", "field": "temperature", "as": "avg_temp"}],
-      "groupby": ["state"]
-    },
-    {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "avg_temp", "order": "descending"}]
-    },
-    {"filter": "datum.rank <= 10"}
-  ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "mark": "bar",
   "encoding": {
     "x": {
-      "field": "avg_temp",
-      "type": "quantitative",
-      "title": "Average Temperature (°C)",
-      "scale": {"zero": false}
+      "field": "exposure_category",
+      "type": "nominal",
+      "title": "Exposure Category"
     },
     "y": {
-      "field": "state",
-      "type": "nominal",
-      "title": "State",
-      "sort": {"field": "avg_temp", "order": "descending"}
+      "field": "uv_level",
+      "type": "quantitative",
+      "title": "UV Level"
     },
     "color": {
-      "field": "avg_temp",
-      "type": "quantitative",
-      "scale": {"scheme": "reds"},
+      "field": "exposure_category",
+      "type": "nominal",
       "legend": null
     },
     "tooltip": [
-      {"field": "state", "type": "nominal"},
-      {"field": "avg_temp", "type": "quantitative", "title": "Avg Temp", "format": ".1f"}
+      {
+        "field": "uv_level",
+        "type": "quantitative",
+        "title": "UV Level"
+      },
+      {
+        "field": "exposure_category",
+        "type": "nominal",
+        "title": "Exposure Category"
+      },
+      {
+        "field": "short_description",
+        "type": "nominal",
+        "title": "Safety"
+      }
     ]
   }
 }

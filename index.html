@@ -13,16 +13,32 @@
 </head>
 <body>
 
+  <style>
+    h1 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 48px; /* Bigger title */
+    }
+    .highlight-key {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #000;
+    }
+    .intro-section p {
+        line-height: 1.6;
+    }
+  </style>
+
   <h1>Malaysia's Weather & Air Quality</h1>
 
   <div class="pure-g">
   <div class="pure-u-1 intro-section">
     <p>
-      Malaysia’s climate is undergoing a significant transformation. As global temperatures rise, 
-      the nation faces unique challenges—from intensifying urban heat islands to fluctuating air 
-      quality levels. This dashboard explores the intersection of <strong>meteorological trends</strong> 
-      and <strong>environmental health</strong>, providing a data-driven look at how weather patterns 
-      and pollution are shaping the Malaysian landscape today.
+      In the Environmental & Public Health domain, 
+      this dashboard is designed for <span class="highlight-key">Malaysian residents or anyone</span> 
+      to monitor <span class="highlight-key">rising temperatures and air pollutant levels</span>. 
+      We track these changes to <span class="highlight-key">mitigate heat-related illnesses and respiratory risks</span> 
+      by <span class="highlight-key">analyzing 7-year meteorological trends</span> through interactive spatial and seasonal visualizations.
     </p>
   </div>
 </div>
@@ -33,9 +49,9 @@
   <div class="chart-container">
     <h2>Malaysia is heating up!</h2>
     <p>
-      The map below shows the average surface temperatures across Malaysia. Notice the <strong>intense heat concentration</strong> 
-      in the northern states of the Peninsula compared to the relatively cooler highlands. Moreover, states like Selangor 
-      and Kuala Lumpur are among the hottest around the year.
+      The map below shows the average surface temperatures across Malaysia. Notice the <span class="highlight-key">intense heat concentration</span> 
+      in the northern states of the Peninsula compared to the relatively cooler highlands. Moreover, states like <span class="highlight-key">Selangor</span> 
+      and <span class="highlight-key">Kuala Lumpur</span> are among the hottest around the year.
     </p>
 
     <div class="pure-g">
@@ -43,25 +59,25 @@
         <div id="vis1" style="width: 100%;"></div>
       </div>
       <div class="pure-u-2-3">
-        <div class="insight-box">
-          <h3>Key Insights</h3>
-          <ul>
-            <li><strong>Urban Heat:</strong> KL and Selangor show significantly higher averages due to urban density.</li>
-            <li><strong>Regional Variance:</strong> Northern states like Kedah experience sharper temperature peaks during the dry season.</li>
-            <li><strong>Interactive:</strong> Use the slider below the map to filter states by temperature thresholds.</li>
-          </ul>
+        <div class="key insights" style="margin-top: 25px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px;">
+            <h3 style="margin-top: 0; color: #333; font-size: 1.2em;">💡 Key Insights </h3>
+            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #2c2f2f;">
+              <li><span class="highlight-key">Urban Heat:</span> KL and Selangor show significantly higher averages due to urban density.</li>
+              <li><span class="highlight-key">Regional Variance:</span> Northern states like Kedah experience sharper temperature peaks.</li>
+              <li><span class="highlight-key">Interactive:</span> Use the slider below the map to filter states.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
     <div class="pure-u-1">
       <div class="chart-container">
         <h2>Top 10 Hottest States </h2>
         <p>
-          While the map provides spatial context, this bar chart allows for a direct comparison 
-          of peak temperatures. This helps identify which specific urban centers are 
+          While the map provides spatial context, this bar chart allows for a <span class="highlight-key">direct comparison</span> 
+          of peak temperatures. This identifies which <span class="highlight-key">urban centers</span> are 
           facing the most significant heat challenges.
         </p>
         <div id="vis2" style="width: 100%;"></div>
@@ -70,12 +86,10 @@
 
     <div class="pure-u-1">
       <div class="chart-container">
-        <h2>Temperature vs. Humidity: Why It Feels Hotter Than the Thermometer Says? </h2>
+        <h2>Temperature vs. Humidity: Why It Feels Hotter? </h2>
         <p>
-          We can see different states experiencing various humidity and we can see the relationship between both variables. 
-          In Malaysia, heat is rarely just about degrees. This visualization explores the tight-knit relationship between 
-          temperature and humidity, illustrating the environmental conditions that create the "sticky" tropical heat we
-          experience every day.
+          In Malaysia, heat is rarely just about degrees. This visualization explores the <span class="highlight-key">tight-knit relationship</span> between 
+          temperature and humidity, illustrating the <span class="highlight-key">environmental conditions</span> that create the "sticky" tropical heat.
         </p>
         <div id="vis3" style="width: 100%;"></div>
       </div>
@@ -85,10 +99,9 @@
     <div class="chart-container">
         <h2>Clearing the Air: Tracking Malaysia's Air Pollutants </h2>
         <p>
-          Over here air quality has some ups and downs depending on each type of polutant lingering through the air. 
-          Beyond the weather, the quality of the air we breathe tells a story of urban growth and environmental change. 
-          This seven-year trend analysis monitors key pollutants, showing how our air quality has shifted through different 
-          seasons and industrial cycles.
+          Beyond the weather, the quality of the air we breathe tells a story of urban growth. 
+          This <span class="highlight-key">seven-year trend analysis</span> monitors key pollutants, showing how 
+          <span class="highlight-key">air quality</span> has shifted through different industrial cycles.
         </p>
         <div id="vis4" style="width: 100%;"></div>
     </div>
@@ -97,93 +110,132 @@
     <div class="pure-u-1">
     <div class="chart-container">
         <h2> Triple Threat: Balancing Heat, Moisture, Wind Speed </h2>
-        <p>Weather is a complex system. By looking at three dimensions at once—temperature, humidity, and wind—this 
-          bubble plot shows how air movement can either intensify or provide relief from the oppressive tropical sun.</p>
+        <p>By looking at three dimensions—temperature, humidity, and wind—this 
+          bubble plot shows how <span class="highlight-key">air movement</span> can either intensify or 
+          provide <span class="highlight-key">relief</span> from the oppressive tropical sun.</p>
         <div id="vis5" style="width: 100%;"></div>
     </div>
 </div>
-
+<!-- vis6 -->
     <div class="pure-u-1">
     <div class="chart-container">
         <h2 class="chart-title">Annual Cycles: Identify Pollution "Hot Months"</h2>
         <p class="chart-description">
-            Here reveals seasonal patterns in air quality throughout the months of different years. By observing 
-            the intensity of color across months and years, we can pinpoint specific times of the year (such as the haze season) 
-            where pollutants consistently peak.
+            Pinpoint specific times of the year, such as the <span class="highlight-key">haze season</span>, 
+            where <span class="highlight-key">pollutants consistently peak</span> across multiple years.
+            It also identifies recurring patterns like the haze season, where specific pollutants consistently peak. Through an interactive 
+            dropdown menu, users can toggle between different pollutants (such as NO2), while a sequential color scale intuitively maps 
+            concentration levels (ug/m^3), enabling stakeholders to predict future air quality crises and implement timely preventive health measures.
         </p>
         <div id="vis6" style="width: 100%;"></div>
     </div>
 </div>
 <!-- vis7 -->
-    <div class="pure-u-1"> <div class="chart-container">
+<div class="pure-u-1"> <div class="chart-container">
         <h2 class="chart-title">Sun Safety: UV Exposure Categories</h2>
         <p class="chart-description">
-            We should be aware of the uv radiating from the sun. There are a few levels of UV exposure that we should keep an eye out for.
-            Thus, we need to understand the intensity of ultraviolet radiation. Hover over the segments to see safety guidelines and 
-            protection requirements for different index levels.
+            Understanding the intensity of <span class="highlight-key">ultraviolet radiation</span> is vital. 
+            We can observe <span class="highlight-key">safety guidelines</span> and 
+            protection requirements for different index levels. This helps us to be aware when we walk outside. 
         </p>
-        <div id="vis7" style="width: 100%;"></div>
-        <!-- Key Insights Section -->
-        <div class="key-insights" style="margin-top: 25px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px;">
-          <h3 style="margin-top: 0; color: #333; font-size: 1.2em;">💡 Key Insights </h3>
-          <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555;">
-            <li style="margin-bottom: 10px;"><strong>The Reflection Effect:</strong> UV radiation isn't just direct; it reflects off water, sand, and even pavement, potentially doubling your exposure even in the shade.</li>
-            <li style="margin-bottom: 10px;"><strong>The Cloud Myth:</strong> Up to 80% of UV rays pass through light clouds. Most "overcast" burns happen because people skip protection thinking the sun is blocked.</li>
-            <li style="margin-bottom: 10px;"><strong>The 10-4 Rule:</strong> UV intensity is highest between 10:00 AM and 4:00 PM. During these hours, the risk of skin damage is significantly higher regardless of how hot the air feels.</li>
-            <li style="margin-bottom: 10px;"><strong>Cumulative Damage:</strong> Even "Low" and "Moderate" levels contribute to long-term skin aging and damage. Protection should be a daily habit, not just for "Extreme" days.</li>
-          </ul>
+        <div class="pure-g">
+    <div class="pure-u-1">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <div id="vis7" style="width: 80%;"></div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+
+<div class="pure-g" style="display: flex; align-items: stretch; margin-top: 20px;">
+    
+    <div class="pure-u-1-2" style="display: flex; flex-direction: column;">
+        <div class="key-insights" style="margin-right: 10px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
+            <h3 style="margin-top: 0; color: #333; font-size: 1.2em;">💡 Key Insights</h3>
+            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555;">
+                <li style="margin-bottom: 10px;"><span class="highlight-key">The Reflection Effect:</span> UV reflects off water and pavement, potentially doubling exposure.</li>
+                <li style="margin-bottom: 10px;"><span class="highlight-key">The Cloud Myth:</span> Up to 80% of UV rays pass through light clouds.</li>
+                <li style="margin-bottom: 10px;"><span class="highlight-key">The 10-4 Rule:</span> UV intensity is highest between 10:00 AM and 4:00 PM.</li>
+                <li style="margin-bottom: 10px;"><span class="highlight-key">Cumulative Damage:</span> Protection should be a <span class="highlight-key">daily habit</span>, not just for extreme days.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pure-u-1-2" style="display: flex; flex-direction: column;">
+        <div class="key-insights" style="margin-left: 10px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
+            <h3 style="margin-top: 0; color: #333; font-size: 1.2em;">💡 Did you know?</h3>
+            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555;">
+                <li style="margin-bottom: 10px;"><span class="highlight-key">Low:</span> No damage is expected. You can safely stay outside.</li>
+                <li style="margin-bottom: 10px;"><span class="highlight-key">Moderate - High:</span> Some precaution needed for people with sensitive skin. Seek shade during midday hours. Put on a shirt, use sun screen and a hat.</li>
+                <li style="margin-bottom: 10px;"><span class="highlight-key">Very High - Extreme:</span> Avoid unnecessary exposure especially during midday hours. Make sure you seek shade. Shirt, sun screen and hat are a must.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
 <!-- vis8 -->
-    <div class="pure-u-1"></div>
-    <div class="chart-container">
+<div class="pure-u-1"></div> <div class="chart-container">
       <h2 class="chart-title">Climate Profiles Across Malaysia</h2>
       <p class="chart-description">
-            Here reveals seasonal patterns in air quality throughout the months of different years. By observing 
-            the intensity of color across months and years, we can pinpoint specific times of the year (such as the haze season) 
-            where pollutants consistently peak.
+            This <span class="highlight-key">ridge chart</span> reveals the distribution of climate patterns across 
+            different regions, highlighting <span class="highlight-key">seasonal fluctuations</span> in air quality.
+            Pollutants reaching the <span class="highlight-key">Hazardous</span> or <span class="highlight-key">Very Unhealthy</span> levels (red/purple segments) trigger <span class="highlight-key">mandatory escalation</span> to the Department of Environment (DOE). 
+            <br><br>
+            During these peaks, <span class="highlight-key">PM2.5 particles</span> are so small they bypass the lungs and enter the bloodstream directly. 
+            Reporting isn't just for data; it triggers legal <span class="highlight-key">Cloud Seeding</span> operations and school closure protocols across affected Malaysian states.
+            Segments in the <span class="highlight-key">Good</span> and <span class="highlight-key">Moderate</span> ranges represent concentrations 
+            generally safe for the public.
+            <br><br>
+            <strong>The "Moderate" Nuance:</strong> While labeled safe, <span class="highlight-key">Moderate levels</span> can still cause "silent inflammation" in sensitive groups. Malaysia’s <span class="highlight-key">MAQI standards</span> are specifically calibrated for tropical humidity, 
+            which can trap pollutants closer to the ground, making "Moderate" air feel heavier than in dryer climates.
         </p>
         <div id="vis8" style="width: 100%;"></div>   
     </div>
-  
+
 <!-- vis9 -->
-    <div class="chart-container" style="padding: 25px; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<div class="chart-container" style="padding: 25px; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
     <h2 class="chart-title" style="color: #e43030;">
-        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Pollutant Health Impact Analysis
+        <i class="fas fa-exclamation-triangle"></i> Pollutant Health Impact Analysis
     </h2>
     <p>
-      We can see the risk levels of each types of pollutants to know where they are safe and when they are in danger. 
-      The color tells you the category of risk and the length tells you how deep into that category the pollutant currently sits.
+      Here we get to identify <span class="highlight-key">risk levels</span> for each pollutant. Color indicates the category and length shows the concentration depth.
     </p>
-    <div class="pure-g" style="display: flex; align-items: center; flex-wrap: nowrap;">
+
+    <div class="pure-g" style="display: flex; align-items: stretch; flex-wrap: nowrap;">
+        
         <div class="pure-u-3-5">
-            <div id="vis9"></div>
+            <div id="vis9" style="width: 100%;"></div>
         </div>
-<!-- adding extra info vis9 -->
-        <div class="pure-u-2-5" style="margin-left: 30px;">
-            <div class="status-panel" style="display: flex; flex-direction: column; gap: 15px;">
+
+        <div class="pure-u-2-5" style="margin-left: 30px; display: flex; flex-direction: column;">
+            <div class="status-panel" style="display: flex; flex-direction: column; gap: 15px; height: 100%;">
                 
-                <div style="padding: 15px; background: #fdf2f2; border-radius: 8px; border: 1px solid #feb2b2;">
-                    <h4 style="margin: 0 0 5px 0; color: #9b2c2c;">Reporting Requirement</h4>
-                    <p style="margin: 0; font-size: 0.85em; color: #7b2d2d;">
-                        Pollutants extending into the <strong>purple/red zones</strong> require immediate submission to the Environmental Agency.
-                    </p>
+                <div style="padding: 15px; background: #fdf2f2; border-radius: 8px; border: 1px solid #f88a8a; flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; color: #9b2c2c;">Critical Health Alerts</h4>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 0.85em; color: #7b2d2d; line-height: 1.4;">
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Mandatory Action:</span> Hazardous levels require immediate notification to the Environmental Agency.</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Health Protocol:</span> Physical activities should be moved indoors to prevent long-term respiratory scarring.</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Haze Response:</span> Persistent "Unhealthy" readings may trigger school closure warnings in affected districts.</li>
+                    </ul>
                 </div>
-                <div style="padding: 15px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
-                    <h4 style="margin: 0 0 5px 0; color: #166534;">Safe Thresholds</h4>
-                    <p style="margin: 0; font-size: 0.85em; color: #14532d;">
-                        Green bars indicate concentrations within the WHO "Safe to Breathe" guidelines.
-                    </p>
-                </div>
+
+                <div style="padding: 15px; background: #eaf6fa; border-radius: 8px; border: 1px solid #34a4f5; flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; color: #3a6cec;">Acceptable Air Quality</h4>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 0.85em; color: #3c76c1; line-height: 1.4;">
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Safe Baseline:</span> These levels meet the WHO "Safe to Breathe" air quality guidelines.</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Sensitive Groups:</span> While "Good," unusually sensitive individuals should still monitor PM2.5 trends.</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight-key">Daily Habit:</span> These conditions are optimal for outdoor exercise and standard industrial operations.</li>
+                    </ul>
+                </div> 
             </div>
         </div>      
     </div>
 </div>
 <!-- vis10 -->
-    <div class="pure-g">
+<div class="pure-g">
     <div class="pure-u-1-1">
         <div class="chart-container" style="padding: 40px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);">
             <div style="text-align: left; margin-bottom: 30px;">
@@ -191,23 +243,28 @@
                     <i class="fas fa-map-marked-alt"></i> Geographic Climate Correlation
                 </h2>
                 <p style="color: #020303; font-size: 1.1em; line-height: 1.5; margin: 0;">
-                    This map visualizes the relationship between <strong>Humidity</strong> (represented by bubble size) and 
-                    <strong>Temperature</strong> (represented by color) across Malaysia's states. Higher concentrations of 
-                    humidity are typically found in coastal regions, while temperature variations highlight the contrast 
-                    between urban centers and highland areas.
+                    Visualizing the relationship between <span class="highlight-key">Humidity</span> and 
+                    <span class="highlight-key">Temperature</span>. High humidity is found in <span class="highlight-key">coastal regions</span>, while temperature 
+                    peaks highlight <span class="highlight-key">urban centers</span>. Here it provides a specialized climate analysis tool for <span class="highlight-key">urban planners, health officials,</span>
+                    and <span class="highlight-key">residents</span> to monitor the relationship between urbanization and local weather patterns. By utilizing an interactive bubble map, the visualization tracks 
+                    temperature through color gradients and humidity through bubble size, allowing users to identify how coastal proximity and urban density create distinct microclimates.
                 </p>
             </div>
 
             <div id="vis10" style="width: 100%; min-height: 500px; background-color: #fcfcfc; border-radius: 10px; border: 1px solid #eee;"></div>
 
             <div class="map-footer" style="margin-top: 30px; display: flex; justify-content: flex-start; gap: 50px; border-top: 1px solid #eee; padding-top: 25px;">
-                <div style="max-width: 300px;">
+                <div style="max-width: 500px;">
                     <strong style="color: #e74c3c;font-size: 1.2em;"><i class="fas fa-thermometer-half"></i> Temperature Scale</strong>
-                    <p style="font-size: 0.85em; margin: 5px 0; color: #7f8c8d;">Red tones indicate higher heat intensity, while blue tones represent cooler climates.</p>
+                    <p style="font-size: 0.85em; margin: 5px 0; color: #757d7e;"><span class="highlight-key">Red tones</span> indicate higher heat intensity.</p>
                 </div>
-                <div style="max-width: 300px; border-left: 2px solid #e0e0e0; padding-left: 30px;">
+                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
                     <strong style="color: #2980b9;font-size: 1.2em;"><i class="fas fa-tint"></i> Humidity Volume</strong>
-                    <p style="font-size: 0.85em; margin: 5px 0; color: #7f8c8d;">Larger bubbles correspond to higher localized humidity percentages.</p>
+                    <p style="font-size: 0.85em; margin: 5px 0; color: #7d8283;"><span class="highlight-key">Larger bubbles</span> correspond to higher humidity.</p>
+                </div>
+                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
+                    <strong style="color: #f649c5;font-size: 1.2em;"><i class="fas fa-tint"></i> Key Insights</strong>
+                    <p style="font-size: 0.85em; margin: 5px 0; color: #7d8283;"><span class="highlight-key">Grey areas</span> are shaded to focus on the malaysia region.</p>
                 </div>
             </div>
 
@@ -215,25 +272,27 @@
     </div>
 </div>
 
-<!-- footer -->
-  </div> <div class="footer">
-    <p><strong>Data Source:</strong> OpenWeatherMap & Department of Environment Malaysia</p>
+</div> <div class="footer">
+    <p><strong>Data Sources:</strong></p>
+    </p><strong>Kaggle: Malaysia's Weather Data -> https://www.kaggle.com/datasets/shahmirvarqha/weather-data-malaysia</strong></p>
+    </p><strong>OpenDOSM -> https://open.dosm.gov.my/data-catalogue/air_pollution</strong></p>
     <p><strong>Designed By:</strong> Goh Jun Min</p>
+    <p><strong>Data Modified By:</strong> 28/05/2026</p>
   </div>
 
 
   <script>
     // Ensure these paths match where your JSON files are stored!
     vegaEmbed('#vis1', 'chloropleth_map/js/chloropleth_map.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis2', 'bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis2', 'horizontal_bar_chart/js/horizontal_bar.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis3', 'scatter_plot/js/scatter_plot.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis4', 'line_chart/js/line_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis5', 'bubble_plot/js/bubble_plot.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis6', 'heatmap/js/heatmap.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis7', 'donut_chart/js/donut_chart.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis7', 'bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis8', 'ridge_chart/js/ridge_chart.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis9', 'diverging_barchart/js/diverging.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis10', 'bubble_map/js/bubble_map.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis9', 'stacked_bar_chart/js/stack.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis10','bubble_map/js/bubble_map.json', {"actions": false}).catch(console.error);
 
   </script>
 
