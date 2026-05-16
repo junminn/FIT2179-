@@ -243,28 +243,23 @@
                     <i class="fas fa-map-marked-alt"></i> Geographic Climate Correlation
                 </h2>
                 <p style="color: #020303; font-size: 1.1em; line-height: 1.5; margin: 0;">
-                    Visualizing the relationship between <span class="highlight-key">Humidity</span> and 
-                    <span class="highlight-key">Temperature</span>. High humidity is found in <span class="highlight-key">coastal regions</span>, while temperature 
-                    peaks highlight <span class="highlight-key">urban centers</span>. Here it provides a specialized climate analysis tool for <span class="highlight-key">urban planners, health officials,</span>
-                    and <span class="highlight-key">residents</span> to monitor the relationship between urbanization and local weather patterns. By utilizing an interactive bubble map, the visualization tracks 
-                    temperature through color gradients and humidity through bubble size, allowing users to identify how coastal proximity and urban density create distinct microclimates.
+                    Visualizing the relationship of <span class="highlight-key">Wind Speeds</span> around Malaysia.
+                    Here it provides a specialized climate analysis tool for <span class="highlight-key">urban planners, maritime safety officials,</span> and <span class="highlight-key">residents</span> 
+                    to monitor atmospheric circulation and local weather hazards. By utilizing an interactive symbol map, the visualization tracks wind velocity through proportional bubble sizes, 
+                    allowing users to identify how coastal exposure, monsoon paths, and topography create distinct regional wind profiles across different states.
                 </p>
             </div>
 
             <div id="vis10" style="width: 100%; min-height: 500px; background-color: #fcfcfc; border-radius: 10px; border: 1px solid #eee;"></div>
 
             <div class="map-footer" style="margin-top: 30px; display: flex; justify-content: flex-start; gap: 50px; border-top: 1px solid #eee; padding-top: 25px;">
-                <div style="max-width: 500px;">
-                    <strong style="color: #e74c3c;font-size: 1.2em;"><i class="fas fa-thermometer-half"></i> Temperature Scale</strong>
-                    <p style="font-size: 0.85em; margin: 5px 0; color: #757d7e;"><span class="highlight-key">Red tones</span> indicate higher heat intensity.</p>
+                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
+                    <strong style="color: #21582a;font-size: 1.2em;"><i class="fas fa-tint"></i> Wind Speed</strong>
+                    <p style="font-size: 1.0em; margin: 5px 0; color: #097941;"><span class="highlight-key" style="font-weight: bold; color: #097941;">Winds</span> are shown in a range of sizes where the bigger the bubbles, the faster the winds occur around those areas in each state.</p>
                 </div>
                 <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
-                    <strong style="color: #2980b9;font-size: 1.2em;"><i class="fas fa-tint"></i> Humidity Volume</strong>
-                    <p style="font-size: 0.85em; margin: 5px 0; color: #7d8283;"><span class="highlight-key">Larger bubbles</span> correspond to higher humidity.</p>
-                </div>
-                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
-                    <strong style="color: #f649c5;font-size: 1.2em;"><i class="fas fa-tint"></i> Key Insights</strong>
-                    <p style="font-size: 0.85em; margin: 5px 0; color: #7d8283;"><span class="highlight-key">Grey areas</span> are shaded to focus on the malaysia region.</p>
+                    <strong style="color: #723c71;font-size: 1.2em;"><i class="fas fa-tint"></i> Key Insights</strong>
+                    <p style="font-size: 1.0em; margin: 5px 0; color: #8c13a1;"><span class="highlight-key" style="font-weight: bold; color: #8c13a1;">Grey areas</span> are shaded to show the focus on the malaysia region. White shaded regions are other parts of countries which are located near Malaysia.</p>
                 </div>
             </div>
 
@@ -292,7 +287,7 @@
     vegaEmbed('#vis7', 'bar_chart/js/bar_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis8', 'ridge_chart/js/ridge_chart.json', {"actions": false}).catch(console.error);
     vegaEmbed('#vis9', 'stacked_bar_chart/js/stack.json', {"actions": false}).catch(console.error);
-    vegaEmbed('#vis10','bubble_map/js/bubble_map.json', {"actions": false}).catch(console.error);
+    vegaEmbed('#vis10','symbol_map/js/symbol_map.json', {"actions": false}).catch(console.error);
 
   </script>
 

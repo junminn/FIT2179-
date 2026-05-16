@@ -3,20 +3,11 @@
   "width": 1100,
   "height": 500,
   "title": {
-    "text": "Weather Station Humidity and Temperature in Malaysia",
+    "text": "Weather Station Wind Speed in Malaysia",
     "fontSize": 20,
     "anchor": "middle",
     "offset": 20
   },
-  "params": [
-    {
-      "name": "temp_filter",
-      "value": 20,
-      "bind": {
-        "input": "range", "min": 20, "max": 35, "step": 1, "name": "Min Temp: "
-      }
-    }
-  ],
   "projection": {
     "type": "mercator",
     "center": [109.5, 4.2],
@@ -58,37 +49,30 @@
           "from": {
             "data": {"url": "data/full_weather.csv"},
             "key": "state",
-            "fields": ["temperature", "humidity", "dew_point"]
+            "fields": ["wind_speed"]
           }
-        },
-        {"filter": "datum.temperature >= temp_filter"}
+        }
       ],
       "mark": {
         "type": "circle",
         "opacity": 0.8,
         "stroke": "black",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.5,
+        "fill": "#1c721e"
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},
         "size": {
-          "field": "humidity",
+          "field": "wind_speed",
           "type": "quantitative",
-          "title": "Humidity (%)",
-          "scale": {"range": [50, 800]}
-        },
-        "color": {
-          "field": "temperature",
-          "type": "quantitative",
-          "title": "Temp (°C)",
-          "scale": {"scheme": "redblue", "reverse": true}
+          "title": "Wind Speed",
+          "scale": {"domain": [0, 0.5], "range": [50, 800]}
         },
         "tooltip": [
           {"field": "identifying_location", "title": "Station"},
           {"field": "state", "title": "State"},
-          {"field": "temperature", "title": "Temperature (°C)"},
-          {"field": "humidity", "title": "Humidity (%)"}
+          {"field": "wind_speed", "title": "Wind Speed"}
         ]
       }
     },
@@ -111,7 +95,7 @@
         "text": {"field": "properties.name", "type": "nominal"},
         "opacity": {
           "condition": {
-            "test": "datum.properties.name == 'Selangor' || datum.properties.name == 'Sarawak' || datum.properties.name == 'Sabah' || datum.properties.name == 'Johor' || datum.properties.name == 'Pahang' || datum.properties.name == 'Perak'",
+            "test": "datum.properties.name == 'Selangor' || datum.properties.name == 'Sarawak' || datum.properties.name == 'Sabah' || datum.properties.name == 'Johor' || datum.properties.name == 'Kedah' || datum.properties.name == 'Kelantan' || datum.properties.name == 'Melaka' || datum.properties.name == 'Negeri Sembilan' || datum.properties.name == 'Pahang' || datum.properties.name == 'Perak' || datum.properties.name == 'Perlis' || datum.properties.name == 'Pulau Pinang' || datum.properties.name == 'Terengganu' || datum.properties.name == 'W.P. Kuala Lumpur' || datum.properties.name == 'W.P. Labuan' || datum.properties.name == 'W.P. Putrajaya'",
             "value": 0.7
           },
           "value": 0
