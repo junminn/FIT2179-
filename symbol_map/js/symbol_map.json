@@ -55,7 +55,7 @@
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.8,
+        "opacity": 0.5,
         "stroke": "black",
         "strokeWidth": 0.5,
         "fill": "#1c721e"
