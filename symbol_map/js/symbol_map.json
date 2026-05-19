@@ -58,7 +58,7 @@
         "opacity": 0.5,
         "stroke": "black",
         "strokeWidth": 0.5,
-        "fill": "#1c721e"
+        "fill": "#4ca24e"
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
