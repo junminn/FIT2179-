@@ -33,7 +33,28 @@
       "field": "pollutant",
       "type": "nominal",
       "scale": {
-        "scheme": "category10"
+        "domain": [
+          "CO", 
+          "CO2", 
+          "NO2", 
+          "O3", 
+          "PM10", 
+          "PM2.5", 
+          "SO2", 
+          "Unidentified", 
+          "multi-pollutant"
+        ],
+        "range": [
+          "#0072B2", 
+          "#E69F00", 
+          "#56B4E9", 
+          "#009E73", 
+          "#F0E442", 
+          "#CC79A7", 
+          "#D55E00", 
+          "#999999", 
+          "#000000"
+        ]
       },
       "title": "Pollutant Type"
     },
