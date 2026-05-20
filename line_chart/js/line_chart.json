@@ -5,7 +5,7 @@
     "fontSize": 18,
     "anchor": "start"
   },
-  "width": "container",
+  "width": 1000,
   "height": 400,
   "data": {
     "url": "data/air_pollution.csv",
