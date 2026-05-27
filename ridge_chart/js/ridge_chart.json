@@ -1,6 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "data/full_weather.csv"},
+  "padding": {
+    "top": 10,
+    "left": 10,
+    "bottom": 10,
+    "right": 10
+  },
   "params": [
     {
       "name": "Threshold",
@@ -23,7 +29,7 @@
     }
   },
   "spec": {
-    "width": 800,
+    "width": 820,
     "height": 90, 
     "transform": [
       {
