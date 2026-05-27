@@ -14,9 +14,16 @@
 <body>
 
   <style>
+    /* Widened main canvas container to allow full map visibility without clipping */
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
     h1 {
       font-family: "Times New Roman", Times, serif;
-      font-size: 48px; /* Bigger title */
+      font-size: 48px; 
+      text-align: center;
     }
     .highlight-key {
       font-family: "Times New Roman", Times, serif;
@@ -26,302 +33,388 @@
     }
     .intro-section p {
         line-height: 1.6;
+        text-align: center;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      font-family: sans-serif;
+    }
+    /* White container panel styling behind charts */
+    .chart-container {
+      width: 100%;
+      background: #ffffff; 
+      border-radius: 15px; 
+      padding: 40px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+      box-sizing: border-box;
+    }
+    .map-wrapper {
+      width: 100%;
+      overflow: hidden;
+      display: block;
     }
   </style>
+
+<div class="dashboard-container">
 
   <h1>Malaysia's Weather & Air Quality</h1>
 
 <div class="pure-g">
-  <div class="pure-u-1 intro-section">
+  <div class="pure-u-1 intro-section" style="margin-bottom: 20px;">
     <p style="font-family: sans-serif; font-weight: normal;">
-      This dashboard is designed for <strong>Malaysian residents or anyone</strong> 
-      to monitor <strong>rising temperatures and air pollutant levels</strong>. 
-      We track these changes to <strong>prevent heat-related illnesses and respiratory risks</strong> 
-      by analyzing these trends through interactive spatial and seasonal visualizations.
+      This dashboard helps Malaysian residents monitor rising temperatures.<br>
+      We track these changes to prevent serious illnesses.<br>
+      Our analysis looks at historical trends through visualizations.
     </p>
   </div>
 </div>
   
-  <div class="pure-g">
+<div class="pure-g">
     
   <div class="pure-u-1">
-  <div class="chart-container">
-    <h2 style="font-family: sans-serif; font-weight: bold;">Malaysia is heating up!</h2>
-    <p style="font-family: sans-serif; font-weight: normal;">
-      The map below shows the average surface temperatures across Malaysia. Notice the <strong style="font-weight: normal;">intense heat concentration</strong>
-      in the northern states of the Peninsula compared to the relatively cooler highlands. Moreover, states like <strong style="font-weight: normal;">Selangor</strong>
-      and  <strong style="font-weight: normal;">Kuala Lumpur</strong> are among the hottest around the year.
-    </p>
+    <div class="chart-container">
+      <h2 style="font-family: sans-serif; font-weight: bold;">Malaysia is heating up!</h2>
+      <p style="font-family: sans-serif; font-weight: normal;">
+        The map below displays average surface temperatures across Malaysia.<br>
+        Notice the intense heat concentration within the northern states.<br>
+        Selangor and Kuala Lumpur remain hot throughout the year.
+      </p>
 
-    <div class="pure-g">
-      <div class="pure-u-2-4">
-        <div id="vis1" style="width: 100%;"></div>
-      </div>
-      <div class="pure-u-2-3">
-        <div class="key insights" style="margin-top: 25px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px;">
-            <h3 style="margin-top: 0; color: #1e1d1d; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Key Insights </h3>
-            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #2c2f2f; font-family: sans-serif; font-weight: normal;">
-              <li style="font-weight: normal;"> <strong style="font-weight: normal;">Urban Heat:</strong> KL and Selangor show significantly higher averages due to urban density.</li>
-              <li style="font-weight: normal;"> <strong style="font-weight: normal;">Regional Variance:</strong> Northern states like Kedah experience sharper temperature peaks.</li>
-              <li style="font-weight: normal;"> <strong style="font-weight: normal;">Interactive:</strong> Use the slider below the map to filter states.</li>
-            </ul>
-          </div>
+      <div class="pure-g">
+    <div class="pure-u-1" style="box-sizing: border-box; margin-bottom: 25px;">
+        <div class="map-wrapper">
+            <div id="vis1" style="width: 100%;"></div>
         </div>
-      </div>
     </div>
-  </div>
 
-    <div class="pure-u-1">
+    <div class="pure-u-1" style="box-sizing: border-box;">
+        <div class="pure-g" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 20px; margin-top: 25px;">
+                
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; box-sizing: border-box;">
+                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
+                    <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Key Insights</h3>
+                    <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
+                        <li style="margin-bottom: 10px;"><strong>Urban Heat:</strong> KL displays higher averages from density.</li>
+                        <li style="margin-bottom: 10px;"><strong>Variance:</strong> Northern regions face sharper peak patterns.</li>
+                        <li style="margin-bottom: 0;"><strong>Interactive:</strong> Use sliders below maps to filter states.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; box-sizing: border-box;">
+                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
+                    <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Did you know?</h3>
+                    <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
+                        <li style="margin-bottom: 10px;"><strong>Low Range:</strong> Minimal damage risks expected outdoors.</li>
+                        <li style="margin-bottom: 10px;"><strong>Moderate Levels:</strong> Wear wide hats alongside protective layers.</li>
+                        <li style="margin-bottom: 0;"><strong>Extreme Maxima:</strong> Find shade immediately during bright periods.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="pure-u-1" style="margin-top: 30px;">
       <div class="chart-container">
         <h2 style="font-family: sans-serif; font-weight: bold;">Top 10 Hottest States </h2>
         <p style="font-family: sans-serif; font-weight: normal;">
-          While the map provides spatial context, this bar chart allows for a  <strong style="font-weight: normal;"> direct comparison</strong> 
-          of peak temperatures. This identifies which <strong style="font-weight: normal;">urban centers</strong> are 
-          facing the most significant heat challenges.
+          This targeted bar chart allows direct visual comparisons.<br>
+          It shows clearly which urban centers face high heat challenges.
         </p>
         <div id="vis2" style="width: 100%;"></div>
       </div>
     </div>
 
-    <div class="pure-u-1">
+    <div class="pure-u-1" style="margin-top: 30px;">
       <div class="chart-container">
         <h2 style="font-family: sans-serif; font-weight: bold;">Temperature vs. Humidity: Why It Feels Hotter? </h2>
         <p style="font-family: sans-serif; font-weight: normal;">
-          In Malaysia, heat is rarely just about degrees.
-          <br><br>
-          This visualization explores the tight-knit relationship between 
-          <br>
-          temperature and humidity, illustrating the environmental
-          <br>
-          conditions that create the "sticky" tropical heat.
+          Tropical weather is rarely measured by simple degrees alone.<br>
+          This plot links heat and moisture values perfectly.<br>
+          It demonstrates elements that produce sticky local conditions.
         </p>
         <div id="vis3" style="width: 100%;"></div>
       </div>
     </div>
 
-    <div class="pure-u-1">
-    <div class="chart-container">
-        <h2 style="font-family: sans-serif; font-weight: bold;">Clearing the Air: Tracking Malaysia's Air Pollutants </h2>
-        <p style="font-family: sans-serif; font-weight: normal;">
-          Beyond the weather, the quality of the air we breathe tells 
-          <br>
-          a story of urban growth. This seven-year trend analysis monitors 
-          <br>
-          key pollutants, showing how air quality has shifted through different industrial cycles.
-        </p>
-        <div id="vis4" style="width: 100%;"></div>
+    <div class="pure-u-1" style="margin-top: 30px;">
+      <div class="chart-container">
+          <h2 style="font-family: sans-serif; font-weight: bold;">Clearing the Air: Tracking Malaysia's Air Pollutants </h2>
+          <p style="font-family: sans-serif; font-weight: normal;">
+            Atmospheric data changes show clear evidence of industrial growth.<br>
+            This timeline charts common pollutants over a seven year window.
+          </p>
+          <div id="vis4" style="width: 100%;"></div>
+      </div>
     </div>
-</div>
-<!-- vis6 -->
-    <div class="pure-u-1">
-    <div class="chart-container">
-        <h2 style="font-family: sans-serif; font-weight: bold;"> Triple Threat: Balancing Heat, Moisture, Wind Speed </h2>
-        <p style="font-family: sans-serif; font-weight: normal;">
-          By looking at three dimensions—temperature, humidity, and wind—this 
-          <br>
-          bubble plot shows how air movementcan either intensify or 
-          <br>
-          provide relief from the tropical sun.
-        </p>
-        <div id="vis5" style="width: 100%;"></div>
+
+    <div class="pure-u-1" style="margin-top: 30px;">
+      <div class="chart-container">
+          <h2 style="font-family: sans-serif; font-weight: bold;"> Triple Threat: Balancing Heat, Moisture, Wind Speed </h2>
+          <p style="font-family: sans-serif; font-weight: normal;">
+            This dynamic chart connects heat, humidity, and wind levels.<br>
+            Air circulation patterns can relieve strong tropical solar radiation.
+          </p>
+          <div id="vis5" style="width: 100%;"></div>
+      </div>
     </div>
-</div>
-<div class="pure-u-1">
-    <div class="chart-container">
-        <h2 class="chart-title" style="font-family: sans-serif; font-weight: bold;">Annual Cycles: Identify Pollution "Hot Months"</h2>
-        <p class="chart-description" style="font-family: sans-serif; font-weight: normal;">
-            Pinpoint specific times of the year, such as the haze season         
-            <br>
-            It also identifies recurring patterns like the haze season, 
-            <br>
-            where specific pollutants consistently peak. Through an interactive 
-            <br>
-            dropdown menu, users can toggle between different pollutants (such as NO2).
-            <br>
-        </p>
-        <div id="vis6" style="width: 100%;"></div>
+
+    <div class="pure-u-1" style="margin-top: 30px;">
+      <div class="chart-container">
+          <h2 class="chart-title" style="font-family: sans-serif; font-weight: bold;">Annual Cycles: Identify Pollution "Hot Months"</h2>
+          <p class="chart-description" style="font-family: sans-serif; font-weight: normal;">
+              Pinpoint specific calendar periods containing dangerous haze conditions.<br>
+              Interactive drop menus allow fast selections among different elements.
+          </p>
+          <div id="vis6" style="width: 100%;"></div>
+      </div>
     </div>
-</div>
-<!-- vis7 -->
-<div class="pure-u-1"> <div class="chart-container">
+
+    <div class="pure-u-1" style="margin-top: 30px;"> 
+      <div class="chart-container">
         <h2 class="chart-title" style="font-family: sans-serif; font-weight: bold;">Sun Safety: UV Exposure Categories</h2>
         <p class="chart-description" style="font-family: sans-serif; font-weight: normal;">
-            Understanding the intensity of <strong style="font-weight: normal;">ultraviolet radiation</strong> is vital.</p>
-        <p> We can observe <strong style="font-weight: normal;">safety guidelines and protection requirements for different index levels.</p>   
+            Tracking the absolute strength of ultraviolet sunrays remains critical.<br>
+            Review community safety tips tailored for specific index readings.
+        </p>   
         <div class="pure-g">
-    <div class="pure-u-1">
-        <div style="display: flex; width: 100%;">
-            <div id="vis7" style="width: 80%;"></div>
-        </div>
-    </div>
-</div>
-
-<div class="pure-g" style="display: flex; align-items: stretch; margin-top: 20px;">
-    
-    <div class="pure-u-1-2" style="display: flex; flex-direction: column;">
-        <div class="key-insights" style="margin-right: 10px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
-            <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Key Insights</h3>
-            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal;">
-                <li style="margin-bottom: 10px; font-weight: normal;"><strong style="font-weight: normal;">The Reflection Effect:</strong> UV reflects off water and pavement, potentially doubling exposure.</li>
-                <li style="margin-bottom: 10px; font-weight: normal;"><strong style="font-weight: normal;">The Cloud Myth:</strong> Up to 80% of UV rays pass through light clouds.</li>
-                <li style="margin-bottom: 10px; font-weight: normal;"><strong style="font-weight: normal;">The 10-4 Rule:</strong> UV intensity is highest between 10:00 AM and 4:00 PM.</li>
-                <li style="margin-bottom: 10px; font-weight: normal;"><strong style="font-weight: normal;">Cumulative Damage:</strong>Protection should be a daily habit, not just for extreme days.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="pure-u-1-2" style="display: flex; flex-direction: column;">
-        <div class="key-insights" style="margin-left: 10px; padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
-            <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Did you know?</h3>
-            <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal;">
-                <li style="margin-bottom: 10px; font-weight: normal;">Low: No damage is expected. You can safely stay outside.</li>
-                <li style="margin-bottom: 10px; font-weight: normal;">Moderate - High:Some precaution needed for people with sensitive skin. Seek shade during midday hours. Put on a shirt, use sun screen and a hat.</li>
-                <li style="margin-bottom: 10px; font-weight: normal;">Very High - Extreme: Avoid unnecessary exposure especially during midday hours. Make sure you seek shade. Shirt, sun screen and hat are a must.</li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-</div>
-</div>
-</div>
-<!-- vis8 -->
-<div class="pure-u-1">
-    <div class="chart-container" style="padding: 40px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);">
-        
-        <div style="text-align: left; margin-bottom: 30px;">
-            <h2 class="chart-title" style="font-size: 1.8em; color: #e74c3c; margin-top: 0; margin-bottom: 10px; font-family: sans-serif; font-weight: bold; line-height: 1.2; padding-left: 15px; border-left: 5px solid #e74c3c;">
-                Climate Profiles Across Malaysia
-            </h2>
-            <p class="chart-description" style="color: #100f0f; font-size: 1.1em; line-height: 1.5; margin: 0; font-family: sans-serif; font-weight: normal;">
-                This <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">ridge chart</span> reveals the distribution of climate patterns across different regions, highlighting <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">seasonal fluctuations</span> in air quality.
-            </p>
+          <div class="pure-u-1">
+              <div id="vis7" style="width: 100%;"></div>
+          </div>
         </div>
 
-        <div style="width: 100%; margin-bottom: 40px;">
-            <div id="vis8" style="width: 100%;"></div>   
-        </div>
-
-        <div class="pure-g" style="display: flex; align-items: stretch; gap: 20px;">
-            
-            <div class="pure-u-1-2" style="flex: 1; display: flex; flex-direction: column;">
-                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
+        <div class="pure-g" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 20px; margin-top: 25px;">
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column;">
+                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
                     <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Key Insights</h3>
                     <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
-                        <li style="margin-bottom: 10px; font-size: 0.95em; font-weight: normal;">
-                            <strong style="font-weight: normal;">Mandatory Escalation:</strong> Pollutants reaching <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">Hazardous</span> or <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">Very Unhealthy</span> levels trigger immediate alarms to the DOE.
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 0.95em; font-weight: normal;">
-                            <strong style="font-weight: normal;">Crisis Protocols:</strong> These strict data reporting peaks trigger critical cloud seeding operations and school closures.
-                        </li>
-                        <li style="margin-bottom: 0; font-size: 0.95em; font-weight: normal;">
-                            <strong style="font-weight: normal;">Safe Baselines:</strong> Segments in the <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">Good</span> and <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">Moderate</span> ranges represent concentrations generally safe for the public.
-                        </li>
+                        <li style="margin-bottom: 10px;"><strong>Reflection:</strong> Rays bounce off concrete surfaces daily.</li>
+                        <li style="margin-bottom: 10px;"><strong>Clouds:</strong> High energy radiation passes overcast gray skies.</li>
+                        <li style="margin-bottom: 10px;"><strong>Timeframes:</strong> Peak exposure hours occur mid-afternoon regularly.</li>
+                        <li style="margin-bottom: 0;"><strong>Habits:</strong> Daily defense routines ensure safe skin protection.</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="pure-u-1-2" style="flex: 1; display: flex; flex-direction: column;">
-                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; border-radius: 8px; flex-grow: 1;">
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column;">
+                <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
                     <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Did you know?</h3>
                     <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
-                        <li style="margin-bottom: 10px; font-weight: normal;">
-                            <strong style="font-weight: normal;">PM2.5 Dangers:</strong> During spikes, particles are so tiny they bypass lung filters and enter your bloodstream directly.
-                        </li>
-                        <li style="margin-bottom: 10px; font-weight: normal;">
-                            <strong style="font-weight: normal;">Silent Inflammation:</strong> Labeled safe, <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">Moderate levels</span> can still cause underlying respiratory irritation in highly sensitive groups.
-                        </li>
-                        <li style="margin-bottom: 0; font-weight: normal;">
-                            <strong style="font-weight: normal;">Tropical Humidity:</strong> Malaysia’s <span class="highlight-key" style="font-family: sans-serif; font-weight: normal;">MAQI standards</span> account for thick moisture, which traps heavy pollutants closer to ground level.
-                        </li>
+                        <li style="margin-bottom: 10px;"><strong>Low Range:</strong> Minimal damage risks expected outdoors.</li>
+                        <li style="margin-bottom: 10px;"><strong>Moderate Levels:</strong> Wear wide hats alongside protective layers.</li>
+                        <li style="margin-bottom: 0;"><strong>Extreme Maxima:</strong> Find shade immediately during bright periods.</li>
                     </ul>
                 </div>
             </div>
-
         </div>
+      </div>
     </div>
-</div>
 
-<!-- vis9-->
-<div class="chart-container" style="padding: 25px; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-    <h2 class="chart-title" style="color: #e43030; font-family: sans-serif; font-weight: bold;">
-        <i class="fas fa-exclamation-triangle"></i> Pollutant Health Impact Analysis
-    </h2>
-    <p>Here we can identify the risk levels for each pollutant.</p>
-    <p>Color indicates the category and length shows the concentration depth.</p>
-    <div class="pure-g" style="display: flex; align-items: stretch; flex-wrap: nowrap;">
-        
-        <div class="pure-u-3-5">
-            <div id="vis9" style="width: 100%;"></div>
-        </div>
-
-        <div class="pure-u-2-5" style="margin-left: 30px; display: flex; flex-direction: column;">
-            <div class="status-panel" style="display: flex; flex-direction: column; gap: 15px; height: 100%;">
-                
-                <div style="padding: 15px; background: #fdf2f2; border-radius: 8px; border: 1px solid #f88a8a; flex: 1;">
-                    <h4 style="margin: 0 0 5px 0; color: #9b2c2c; font-family: sans-serif; font-weight: bold;">Critical Health Alerts</h4>
-                    <ul style="margin: 0; padding-left: 18px; font-size: 1.0em; color: #7b2d2d; line-height: 1.4; font-family: sans-serif; font-weight: normal;">
-                        <li style="margin-bottom: 8px; font-weight: normal;">Mandatory Action: Hazardous levels require immediate notification to the Environmental Agency.</li>
-                        <li style="margin-bottom: 8px; font-weight: normal;">Health Protocol: Physical activities should be moved indoors to prevent long-term respiratory scarring.</li>
-                        <li style="margin-bottom: 8px; font-weight: normal;">Haze Response: Persistent "Unhealthy" readings may trigger school closure warnings in affected districts.</li>
-                    </ul>
-                </div>
-
-                <div style="padding: 15px; background: #eaf6fa; border-radius: 8px; border: 1px solid #34a4f5; flex: 1;">
-                    <h4 style="margin: 0 0 5px 0; color: #3a6cec; font-family: sans-serif; font-weight: bold;">Acceptable Air Quality</h4>
-                    <ul style="margin: 0; padding-left: 18px; font-size: 1.0em; color: #3c76c1; line-height: 1.4; font-family: sans-serif; font-weight: normal;">
-                        <li style="margin-bottom: 8px; font-weight: normal;"><strong style="font-weight: normal;">Safe Baseline:</strong> These levels meet the WHO "Safe to Breathe" air quality guidelines.</li>
-                        <li style="margin-bottom: 8px; font-weight: normal;"><strong style="font-weight: normal;">Sensitive Groups:</strong> While "Good," unusually sensitive individuals should still monitor PM2.5 trends.</li>
-                        <li style="margin-bottom: 8px; font-weight: normal;"><strong style="font-weight: normal;">Daily Habit:</strong>These conditions are optimal for outdoor exercise and standard industrial operations.</li>
-                    </ul>
-                </div> 
-            </div>
-        </div>      
-    </div>
-</div>
-<!-- vis10 -->
-<div class="pure-g">
-    <div class="pure-u-1-1">
-        <div class="chart-container" style="padding: 40px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);">
+    <div class="pure-u-1" style="margin-top: 30px;">
+        <div class="chart-container">
+            
             <div style="text-align: left; margin-bottom: 30px;">
-                <h2 class="chart-title" style="font-size: 1.8em; color: #f40909; margin-bottom: 10px; font-family: sans-serif; font-weight: bold;">
+                <h2 class="chart-title" style="font-size: 1.8em; color: #e74c3c; margin-top: 0; margin-bottom: 10px; font-family: sans-serif; font-weight: bold; line-height: 1.2; padding-left: 15px; border-left: 5px solid #e74c3c;">
+                    Climate Profiles Across Malaysia
+                </h2>
+                <p class="chart-description" style="color: #100f0f; font-size: 1.1em; line-height: 1.5; margin: 0; font-family: sans-serif; font-weight: normal;">
+                    Our ridge visualization displays local regional air variations.<br>
+                    It highlights specific shifting seasonal patterns clearly.
+                </p>
+            </div>
+
+            <div style="width: 100%; margin-bottom: 40px;">
+                <div id="vis8" style="width: 100%;"></div>   
+            </div>
+
+            <div class="pure-g" style="display: flex; align-items: stretch; gap: 20px;">
+                <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; display: flex; flex-direction: column;">
+                    <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
+                        <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Key Insights</h3>
+                        <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
+                            <li style="margin-bottom: 10px; font-size: 0.95em;"><strong>Escalations:</strong> Unhealthy pollution metrics trigger alerts immediately.</li>
+                            <li style="margin-bottom: 10px; font-size: 0.95em;"><strong>Protocols:</strong> Critical values prompt regional school closures.</li>
+                            <li style="margin-bottom: 0; font-size: 0.95em;"><strong>Baselines:</strong> Normal parameters remain generally safe.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; display: flex; flex-direction: column;">
+                    <div class="key-insights" style="padding: 20px; background-color: #edeaea; border-left: 5px solid #e74c3c; margin-right: 40px; border-radius: 8px; flex-grow: 1; box-sizing: border-box;">
+                        <h3 style="margin-top: 0; color: #333; font-size: 1.2em; font-family: sans-serif; font-weight: bold;">💡 Did you know?</h3>
+                        <ul style="list-style-type: none; padding-left: 0; line-height: 1.6; color: #555; font-family: sans-serif; font-weight: normal; margin-bottom: 0;">
+                            <li style="margin-bottom: 10px;"><strong>PM2.5:</strong> Microscopic dust items penetrate human bloodstreams.</li>
+                            <li style="margin-bottom: 10px;"><strong>Irritation:</strong> Moderate environments irritate sensitive lung tissue.</li>
+                            <li style="margin-bottom: 0;"><strong>Humidity:</strong> Thick air holds severe contamination close.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pure-u-1" style="margin-top: 30px;">
+      <div class="chart-container">
+          <h2 class="chart-title" style="color: #e43030; font-family: sans-serif; font-weight: bold; margin-top:0;">
+              <i class="fas fa-exclamation-triangle"></i> Pollutant Health Impact Analysis
+          </h2>
+          <p style="font-family: sans-serif; font-weight: normal;">We trace common pollutant medical risks here.<br>Lengths indicate full recorded content depth values.</p>
+          
+          <div class="pure-g">
+    <div class="pure-u-1" style="box-sizing: border-box; margin-bottom: 25px;">
+        <div id="vis9" style="width: 100%;"></div>
+    </div>
+
+    <div class="pure-u-1" style="box-sizing: border-box;">
+        <div class="pure-g" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 20px; margin-top: 25px;">
+            
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; box-sizing: border-box;">
+                <div style="padding: 15px; background: #fdf2f2; margin-right: 40px; border-radius: 8px; border: 1px solid #f88a8a; flex-grow: 1; box-sizing: border-box;">
+                    <h4 style="margin: 0 0 5px 0; color: #9b2c2c; font-family: sans-serif; font-weight: bold;">Critical Health Alerts</h4>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 1.0em; color: #7b2d2d; line-height: 1.4; font-family: sans-serif; font-weight: normal; list-style-type: square;">
+                        <li style="margin-bottom: 8px;"><strong>Alerts:</strong> Severe updates go directly to regulators.</li>
+                        <li style="margin-bottom: 0;"><strong>Action:</strong> Move exercise classes indoors immediately.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; box-sizing: border-box;">
+                <div style="padding: 15px; background: #eaf6fa; margin-right: 40px; border-radius: 8px; border: 1px solid #34a4f5; flex-grow: 1; box-sizing: border-box;">
+                    <h4 style="margin: 0 0 5px 0; color: #3a6cec; font-family: sans-serif; font-weight: bold;">Acceptable Air Quality</h4>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 1.0em; color: #3c76c1; line-height: 1.4; font-family: sans-serif; font-weight: normal; list-style-type: square;">
+                        <li style="margin-bottom: 8px;"><strong>Baselines:</strong> These marks fulfill WHO safety demands.</li>
+                        <li style="margin-bottom: 0;"><strong>Exercise:</strong> Optimal timing for normal athletic activities.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    <div class="pure-u-1" style="margin-top:30px;">
+        <div class="chart-container">
+            <div style="text-align: left; margin-bottom: 30px;">
+                <h2 class="chart-title" style="font-size: 1.8em; color: #f40909; margin-top:0; margin-bottom: 10px; font-family: sans-serif; font-weight: bold;">
                     <i class="fas fa-map-marked-alt"></i> Geographic Climate Correlation
                 </h2>
                 <p style="color: #020303; font-size: 1.1em; line-height: 1.5; margin: 0; font-family: sans-serif; font-weight: normal;">
-                    Visualizing the relationship of <strong style="font-weight: normal;">Wind Speeds</strong> around Malaysia.
-                </p>
-                <p>Here it provides a specialized climate analysis tool for urban planners, 
-                  maritime safety officials and <strong style="font-weight: normal;">residents</strong>
-                  to monitor atmospheric circulation and local weather hazards. 
-                  This allows users to identify how coastal exposure, monsoon paths, 
-                  and topography create distinct regional wind profiles across different states.
+                    Map charts track regional wind speeds perfectly.<br>
+                    This serves urban planning experts and coastal residents.
                 </p>
             </div>
 
-            <div id="vis10" style="width: 100%; min-height: 500px; background-color: #fcfcfc;"></div>
+            <div class="map-wrapper">
+              <div id="vis10" style="width: 100%; min-height: 500px; background-color: #fcfcfc;"></div>
+            </div>
 
             <div class="map-footer" style="margin-top: 30px; display: flex; justify-content: flex-start; gap: 50px; border-top: 1px solid #eee; padding-top: 25px;">
-                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
+                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 20px;">
                     <strong style="color: #21582a;font-size: 1.2em; font-family: sans-serif; font-weight: bold;"><i class="fas fa-tint"></i> Wind Speed</strong>
-                    <p style="font-size: 1.0em; margin: 5px 0; color: #097941; font-family: sans-serif; font-weight: normal;">Winds are shown in a range of sizes where the bigger the bubbles, the faster the winds occur around those areas in each state.</p>
+                    <p style="font-size: 1.0em; margin: 5px 0; color: #097941; font-family: sans-serif; font-weight: normal;">Larger circular bubbles highlight faster movements.</p>
                 </div>
-                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 50px;">
+                <div style="max-width: 500px; border-left: 2px solid #e0e0e0; padding-left: 20px;">
                     <strong style="color: #723c71;font-size: 1.2em; font-family: sans-serif; font-weight: bold;"><i class="fas fa-tint"></i> Key Insights</strong>
-                    <p style="font-size: 1.0em; margin: 5px 0; color: #8c13a1; font-family: sans-serif; font-weight: normal;">Grey areas are shaded to show the focus on the malaysia region. White shaded regions are other parts of countries which are located near Malaysia.</p>
+                    <p style="font-size: 1.0em; margin: 5px 0; color: #8c13a1; font-family: sans-serif; font-weight: normal;">Shaded fields indicate local territories clearly.</p>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
+  </div> 
 
-</div> <div class="footer">
-    <p><strong>Data Sources:</strong></p>
-    </p><strong>Kaggle: Malaysia's Weather Data -> https://www.kaggle.com/datasets/shahmirvarqha/weather-data-malaysia</strong></p>
-    </p><strong>OpenDOSM -> https://open.dosm.gov.my/data-catalogue/air_pollution</strong></p>
-    <p><strong>Designed By:</strong> Goh Jun Min</p>
-    <p><strong>Data Modified By:</strong> 28/05/2026</p>
-  </div>
+  <style>
+    /* Footer layout variables matching clean visualization styles */
+    .footer-section {
+      margin-top: 60px;
+      padding: 40px 20px;
+      border-top: 2px solid #ced4dd;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2d3748;
+      background: transparent;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      text-align: left;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 280px;
+    }
+    .footer-col h3 {
+      font-size: 1.15em;
+      font-weight: 700;
+      color: #1a202c;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    .footer-item {
+      margin-bottom: 15px;
+      line-height: 1.5;
+      font-size: 0.95em;
+    }
+    .footer-item a {
+      color: #3182ce;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .footer-item a:hover {
+      text-decoration: underline;
+    }
+    .meta-text {
+      font-weight: 600;
+      color: #4a5568;
+    }
+  </style>
+
+  <footer class="footer-section">
+    <div class="footer-grid">
+      
+      <div class="footer-col">
+        <h3>Data sources</h3>
+        
+        <div class="footer-item">
+          <strong>Kaggle — Weather Data:</strong> Malaysia's historical climate measurements.<br>
+          <a href="https://www.kaggle.com/datasets/shahmirvarqha/weather-data-malaysia" target="_blank" rel="noopener noreferrer">
+            https://www.kaggle.com/datasets/shahmirvarqha/weather-data-malaysia
+          </a>
+        </div>
+        
+        <div class="footer-item">
+          <strong>OpenDOSM — Air Pollution:</strong> Atmospheric data catalogue records.<br>
+          <a href="https://open.dosm.gov.my/data-catalogue/air_pollution" target="_blank" rel="noopener noreferrer">
+            https://open.dosm.gov.my/data-catalogue/air_pollution
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Acknowledgements</h3>
+        
+        <div class="footer-item">
+          <span class="meta-text">Designed By:</span> Goh Jun Min
+        </div>
+        
+        <div class="footer-item">
+          <span class="meta-text">Data Modified By:</span> 28/05/2026
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
 
 
   <script>

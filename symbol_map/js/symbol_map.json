@@ -1,7 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1100,
+  "width": 1250,
   "height": 500,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "padding": {
+    "top": 10,
+    "left": 10,
+    "bottom": 10,
+    "right": 150
+  },
   "title": {
     "text": "Weather Station Wind Speed in Malaysia",
     "fontSize": 20,
@@ -11,7 +21,7 @@
   "projection": {
     "type": "mercator",
     "center": [109.5, 4.2],
-    "scale": 3000
+    "scale": 2600
   },
   "layer": [
     {
