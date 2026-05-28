@@ -6,48 +6,141 @@
   "data": {
     "url": "data/uv_info.csv"
   },
-  "mark": "bar",
-  "encoding": {
-    "x": {
-      "field": "exposure_category",
-      "type": "nominal",
-      "title": "Exposure Category"
-    },
-    "y": {
-      "field": "uv_level",
-      "type": "quantitative",
-      "title": "UV Level"
-    },
-    "color": {
-      "field": "exposure_category",
-      "type": "nominal",
-      "scale": {
-        "range": [
-          "#1155ad", 
-          "#8c13a1", 
-          "#f1c40f", 
-          "#e67e22", 
-          "#2ecc71"
+  "layer": [
+    {
+      "description": "LAYER 1: Your Original Bar Chart",
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "exposure_category",
+          "type": "nominal",
+          "title": "Exposure Category"
+        },
+        "y": {
+          "field": "uv_level",
+          "type": "quantitative",
+          "title": "UV Level"
+        },
+        "color": {
+          "field": "exposure_category",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#1155ad", 
+              "#8c13a1", 
+              "#f1c40f", 
+              "#e67e22", 
+              "#2ecc71"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "uv_level",
+            "type": "quantitative",
+            "title": "UV Level"
+          },
+          {
+            "field": "exposure_category",
+            "type": "nominal",
+            "title": "Exposure Category"
+          },
+          {
+            "field": "short_description",
+            "type": "nominal",
+            "title": "Safety"
+          }
         ]
-      },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "uv_level",
-        "type": "quantitative",
-        "title": "UV Level"
-      },
-      {
-        "field": "exposure_category",
-        "type": "nominal",
-        "title": "Exposure Category"
-      },
-      {
-        "field": "short_description",
-        "type": "nominal",
-        "title": "Safety"
       }
-    ]
-  }
+    },
+    {
+      "description": "LAYER 2: Standalone Static Text Annotation",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "lineHeight": 14,
+        "color": "#2c3e50"
+      },
+      "encoding": {
+        "x": {"value": 400},
+        "y": {"value": 40},
+        "text": {
+          "value": [
+            "Values above 11 indicate extreme",
+            "risk. Unprotected skin can burn",
+            "in less than 10 minutes."
+          ]
+        }
+      }
+    },
+    {
+      "description": "LAYER 3: Standalone Static Pointer Arrow",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#2c3e50",
+        "strokeWidth": 1.2,
+        "shape": "arrow"
+      },
+      "encoding": {
+        "x": {"value": 400},
+        "y": {"value": 45},
+        "x2": {"value": 200},
+        "y2": {"value": 100}
+      }
+    },
+    {
+      "description": "LAYER 4: New Text Annotation (Yellow Bar / Low Risk)",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "lineHeight": 14,
+        "color": "#2c3e50"
+      },
+      "encoding": {
+        "x": {"value": 600},
+        "y": {"value": 220},
+        "text": {
+          "value": [
+            "Low risk category.",
+            "Minimal protection needed",
+            "so is safest to go out."
+          ]
+        }
+      }
+    },
+    {
+      "description": "LAYER 5: New Pointer Arrow (Yellow Bar / Low Risk)",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#2c3e50",
+        "strokeWidth": 1.2,
+        "shape": "arrow"
+      },
+      "encoding": {
+        "x": {"value": 600},
+        "y": {"value": 230},
+        "x2": {"value": 490},
+        "y2": {"value": 350}
+      }
+    }
+  ]
 }

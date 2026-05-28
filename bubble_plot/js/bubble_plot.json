@@ -13,68 +13,119 @@
       }
     }
   },
-  "params": [
+  "layer": [
     {
-      "name": "State_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null, "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", "Perak", 
-          "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pulau Pinang", 
-          "Perlis", "Terengganu"
-        ],
-        "labels": [
-          "Show All States", "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", 
-          "Perak", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", 
-          "Pulau Pinang", "Perlis", "Terengganu"
-        ],
-        "name": "Select State: "
+      "description": "LAYER 1: Your Original Bubble Chart",
+      "params": [
+        {
+          "name": "State_selection",
+          "select": {"type": "point", "fields": ["state"]},
+          "bind": {
+            "input": "select",
+            "options": [
+              null, "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", "Perak", 
+              "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pulau Pinang", 
+              "Perlis", "Terengganu"
+            ],
+            "labels": [
+              "Show All States", "Selangor", "Johor", "Sarawak", "Sabah", "Pahang", 
+              "Perak", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", 
+              "Pulau Pinang", "Perlis", "Terengganu"
+            ],
+            "name": "Select State: "
+          }
+        }
+      ],
+      "transform": [
+        {
+          "filter": "!isValid(State_selection_state) || datum.state == State_selection_state[0]"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6,
+        "stroke": "black",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "temperature",
+          "type": "quantitative",
+          "title": "Temperature (°C)",
+          "scale": {"zero": false, "padding": 20}
+        },
+        "y": {
+          "field": "humidity",
+          "type": "quantitative",
+          "title": "Humidity (%)",
+          "scale": {"zero": false, "padding": 20}
+        },
+        "size": {
+          "field": "wind_speed",
+          "type": "quantitative",
+          "title": "Wind Speed (m/s)",
+          "scale": {"range": [50, 1000]}
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "legend": {"orient": "right"}
+        },
+        "tooltip": [
+          {"field": "place", "type": "nominal", "title": "Location"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "city", "type": "nominal", "title": "City"},
+          {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},
+          {"field": "humidity", "type": "quantitative", "title": "Humidity (%)"},
+          {"field": "wind_speed", "type": "quantitative", "title": "Wind (m/s)"}
+        ]
+      }
+    },
+    {
+      "description": "LAYER 2: Standalone Static Text Annotation",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "lineHeight": 14,
+        "color": "#2c3e50"
+      },
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": 40},
+        "text": {
+          "value": [
+            "This cluster shows areas with",
+            "high humidity and intense heat.",
+            "Wind speed at Sabah areas are",
+            "quite fast which could lead to accidents."
+          ]
+        }
+      }
+    },
+    {
+      "description": "LAYER 3: Standalone Static Pointer Arrow",
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#2c3e50",
+        "strokeWidth": 1.2,
+        "shape": "arrow"
+      },
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": 40},
+        "x2": {"value": 610},
+        "y2": {"value": 90}
       }
     }
-  ],
-  "transform": [
-    {
-      "filter": "State_selection == null || datum.state == State_selection"
-    }
-  ],
-  "mark": {
-    "type": "circle",
-    "opacity": 0.6,
-    "stroke": "black",
-    "strokeWidth": 1
-  },
-  "encoding": {
-    "x": {
-      "field": "temperature",
-      "type": "quantitative",
-      "title": "Temperature (°C)",
-      "scale": {"zero": false, "padding": 20}
-    },
-    "y": {
-      "field": "humidity",
-      "type": "quantitative",
-      "title": "Humidity (%)",
-      "scale": {"zero": false, "padding": 20}
-    },
-    "size": {
-      "field": "wind_speed",
-      "type": "quantitative",
-      "title": "Wind Speed (m/s)",
-      "scale": {"range": [50, 1000]}
-    },
-    "color": {
-      "field": "state",
-      "type": "nominal",
-      "title": "State",
-      "legend": {"orient": "right"}
-    },
-    "tooltip": [
-      {"field": "place", "type": "nominal", "title": "Location"},
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "city", "type": "nominal", "title": "City"},
-      {"field": "temperature", "type": "quantitative", "title": "Temp (°C)"},
-      {"field": "humidity", "type": "quantitative", "title": "Humidity (%)"},
-      {"field": "wind_speed", "type": "quantitative", "title": "Wind (m/s)"}
-    ]
-  }
+  ]
 }

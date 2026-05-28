@@ -17,49 +17,93 @@
       }
     }
   },
-  "params": [
+  "layer": [
     {
-      "name": "Pollutant_selection",
-      "select": {"type": "point", "fields": ["pollutant"]},
-      "bind": {
-        "input": "select",
-        "options": [null, "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
-        "labels": ["Show All", "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
-        "name": "Select Pollutant: "
+      "description": "LAYER 1: Your Original Line Chart",
+      "params": [
+        {
+          "name": "Pollutant_selection",
+          "select": {"type": "point", "fields": ["pollutant"]},
+          "bind": {
+            "input": "select",
+            "options": [null, "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
+            "labels": ["Show All", "CO", "NO2", "O3", "PM 10", "PM 2.5", "SO2"],
+            "name": "Select Pollutant: "
+          }
+        }
+      ],
+      "transform": [
+        {
+          "filter": "Pollutant_selection.pollutant == null || datum.pollutant == Pollutant_selection.pollutant"
+        }
+      ],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "tickCount": "year", 
+            "grid": true
+          }
+        },
+        "y": {
+          "field": "concentration ug/m3",
+          "type": "quantitative",
+          "title": "Concentration (µg/m³)"
+        },
+        "color": {
+          "field": "pollutant",
+          "type": "nominal",
+          "legend": {"title": "Pollutant"}
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+          {"field": "pollutant", "type": "nominal"},
+          {"field": "concentration ug/m3", "type": "quantitative", "title": "Value"}
+        ]
+      }
+    },
+    {
+      "description": "LAYER 2: Standalone Static Text Annotation",
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "lineHeight": 14,
+        "color": "#2c3e50"
+      },
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": 40},
+        "text": {
+          "value": [
+            "Concentrations typically spike",
+            "during dry monsoon seasons.",
+            "People should try not to go out so ",
+            "much during this time."
+          ]
+        }
+      }
+    },
+    {
+      "description": "LAYER 3: Standalone Static Pointer Arrow",
+      "mark": {
+        "type": "rule",
+        "color": "#2c3e50",
+        "strokeWidth": 1.2,
+        "shape": "arrow"
+      },
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": 40},
+        "x2": {"value": 440},
+        "y2": {"value": 75}
       }
     }
-  ],
-  "transform": [
-    {
-      "filter": "Pollutant_selection.pollutant == null || datum.pollutant == Pollutant_selection.pollutant"
-    }
-  ],
-  "mark": {"type": "line", "point": true},
-  "encoding": {
-    "x": {
-      "field": "date",
-      "type": "temporal",
-      "title": "Year",
-      "axis": {
-        "format": "%Y",
-        "tickCount": "year", 
-        "grid": true
-      }
-    },
-    "y": {
-      "field": "concentration ug/m3",
-      "type": "quantitative",
-      "title": "Concentration (µg/m³)"
-    },
-    "color": {
-      "field": "pollutant",
-      "type": "nominal",
-      "legend": {"title": "Pollutant"}
-    },
-    "tooltip": [
-      {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
-      {"field": "pollutant", "type": "nominal"},
-      {"field": "concentration ug/m3", "type": "quantitative", "title": "Value"}
-    ]
-  }
+  ]
 }

@@ -13,6 +13,7 @@
   },
   "layer": [
     {
+      "description": "LAYER 1: The original Scatter Plot Points",
       "mark": {"type": "point", "filled": true, "size": 80, "opacity": 0.6},
       "encoding": {
         "x": {
@@ -41,12 +42,65 @@
       }
     },
     {
+      "description": "LAYER 2: The original Regression Line",
       "mark": {"type": "line", "color": "black", "strokeDash": [4,4]},
       "transform": [{"regression": "humidity", "on": "temperature"}],
       "encoding": {
         "x": {"field": "temperature", "type": "quantitative"},
         "y": {"field": "humidity", "type": "quantitative"}
       }
+    },
+    {
+      "description": "LAYER 3: Inline Annotation Elements (Text & Arrow)",
+      "data": {
+        "values": [
+          {
+            "x_start": 21,
+            "y_start": 80.0,
+            "y_end": 80.0,
+            "text": [
+              "It shows a negative correlation as temperature increases.",
+              "Johor shows the highest humidity when temperature is low.",
+              "Overall, every state has different humidity depending on the temperature each day."
+            ]
+          }
+        ]
+      },
+      "layer": [
+        {
+          "description": "Draws the text inside the chart area",
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "bottom",
+            "dy": -5,
+            "fontSize": 12,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "color": "#2c3e50"
+          },
+          "encoding": {
+            "x": {"field": "x_start", "type": "quantitative"},
+            "y": {"field": "y_start", "type": "quantitative"},
+            "text": {"field": "text", "type": "nominal"}
+          }
+        },
+        {
+          "description": "Draws the arrow pointing to a specific coordinate",
+          "mark": {
+            "type": "rule",
+            "color": "#2c3e50",
+            "strokeWidth": 1.5,
+            "shape": "arrow"
+          },
+          "encoding": {
+            "x": {"field": "x_start", "type": "quantitative"},
+            "y": {"field": "y_start", "type": "quantitative"},
+            "x2": {"field": "x_end"},
+            "y2": {"field": "y_end"}
+          }
+        }
+      ]
     }
   ]
 }
