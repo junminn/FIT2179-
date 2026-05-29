@@ -14,7 +14,7 @@
       "bind": {
         "input": "range",
         "min": 26,
-        "max": 35,
+        "max": 32,
         "step": 0.5,
         "name": "Heat Alert (°C): "
       }
@@ -29,13 +29,13 @@
     }
   },
   "spec": {
-    "width": 820,
-    "height": 90, 
+    "width": 950,
+    "height": 90,
     "transform": [
       {
         "density": "temperature",
         "groupby": ["state"],
-        "extent": [24, 38],
+        "extent": [24, 32],
         "steps": 100
       },
       {
@@ -45,7 +45,7 @@
     ],
     "mark": {
       "type": "area",
-      "stroke": "white",
+      "stroke": "grey",
       "strokeWidth": 1,
       "opacity": 0.8,
       "interpolate": "monotone"
@@ -55,7 +55,7 @@
         "field": "value",
         "type": "quantitative",
         "title": "Temperature (°C)",
-        "scale": {"domain": [24, 35]}
+        "scale": {"domain": [24, 32]}
       },
       "y": {
         "field": "density",
